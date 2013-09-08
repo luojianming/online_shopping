@@ -1,0 +1,16 @@
+<%= simple_form_for @product, multipart: true do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, :as => :text, :input_html => {:rows => 1} %>
+    <%= f.input :price %>
+    <%= f.input :discount %>
+    <%= f.input :description, :as => :text, :input_html => {:rows => 5} %>
+    <%= f.label :image, "上传图片：" %>
+    <%= f.file_field :image  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

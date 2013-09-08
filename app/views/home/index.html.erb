@@ -1,4 +1,7 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+<%= render 'product_nav' %>
+
+<div class="container-fluid" style="">
+  <% @products.each do |product| %>
+    <%= render 'product_item', :product => product %>
+  <% end %>
+</div>

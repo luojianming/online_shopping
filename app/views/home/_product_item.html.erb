@@ -1,0 +1,13 @@
+<div class="product_box">
+  <div class="photo">
+    <%= image_tag(product.image_url(:thumb)) %>
+  </div>
+
+  <div class="price">
+    <span>$<%= product.price %></span>
+  </div>
+
+  <div class="description">
+    <span> <%= product.description %></span>
+  </div>
+</div>

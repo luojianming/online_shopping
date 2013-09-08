@@ -1,4 +1,9 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :products do 
+    collection { post :import }
+  end
+
+
   authenticated :user do
     root :to => 'home#index'
   end
