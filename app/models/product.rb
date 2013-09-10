@@ -1,7 +1,15 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :discount, :image, :name, :price, :available, :popular
+  attr_accessible :description, :discount, :image, :name, :price, :available, :popular, :brand, :color, :size, :category
   mount_uploader :image, ImageUploader
 
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+  define_index do
+    indexes :name
+    indexes category
+  end
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
@@ -30,6 +38,17 @@ class Product < ActiveRecord::Base
     when '.xls' then Roo::Excel.new(file.path, nil, :ignore)
     when '.xlsx' then Roo::Excelx.new(file.path, nil, :ignore)
     else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
+
+  private
+
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
     end
   end
 end

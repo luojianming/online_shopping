@@ -1,4 +1,13 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :orders
+
+
+  resources :line_items
+
+
+  resources :carts
+
+
   resources :products do 
     collection { post :import }
   end

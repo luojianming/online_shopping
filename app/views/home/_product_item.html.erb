@@ -1,6 +1,6 @@
 <div class="product_box">
   <div class="photo">
-    <%= image_tag(product.image_url(:thumb)) %>
+    <%= link_to image_tag(product.image_url(:thumb)), product %>
   </div>
 
   <div class="price">
@@ -10,4 +10,18 @@
   <div class="description">
     <span> <%= product.description %></span>
   </div>
+  <p><span class="small_font">折扣</span>
+     <span><%= product.discount %></span>
+  </p>
+
+  <% if product.brand %>
+    <p><span class="small_font">品牌</span>
+      <span><%= product.brand %></span>
+    </p>
+   <% end %>
+  <% if product.size %>
+    <p><span class="small_font">尺寸</span>
+      <span><%= product.size %></span>
+    </p>
+   <% end %>
 </div>

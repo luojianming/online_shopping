@@ -11,18 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908070150) do
+ActiveRecord::Schema.define(:version => 20130909232031) do
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.integer  "quantity",                                 :default => 1
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "order_id"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "tel"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "products", :force => true do |t|
-    t.text     "name"
-    t.float    "price"
+    t.string   "name"
+    t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
     t.float    "discount"
     t.text     "description"
-    t.text     "image"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "image"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.integer  "available"
     t.integer  "popular"
+    t.string   "color"
+    t.string   "size"
+    t.string   "brand"
+    t.string   "category"
   end
 
   create_table "roles", :force => true do |t|

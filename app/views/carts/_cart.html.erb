@@ -1,0 +1,24 @@
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>quantity</th>
+        <th>price</th>
+      </tr>
+    </thead>
+  <% cart.line_items.each do |item| %>
+    <tr>
+      <td><%= image_tag(item.product.image_url(:thumb)) %>
+      <td><%= item.product.name %></td>
+      <td><%= item.quantity %></td>
+      <td class="item_price" id="item_price_<%=item.id%>" ><%= number_to_currency(item.total_price) %></td>
+      <td><%= link_to 'delete', item, :method => :delete,
+          :confirm => 'Are you sure?'%></td>
+    </tr>
+  <% end %>
+  <tr class="total_line" >
+    <td colspan="4" ></td>
+    <td class="total_cell" >Total: <%= number_to_currency(cart.total_price) %></td>
+  </tr>
+</table>

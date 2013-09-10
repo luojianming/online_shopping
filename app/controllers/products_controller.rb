@@ -1,8 +1,15 @@
 class ProductsController < ApplicationController
   # GET /products
-  # GET /products.json
+  # GET /prooducts.json
+  before_filter :authenticate_user!, :except => [:show]
   def index
-    @products = Product.all
+
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
+    if params[:search] != nil
+      @products = Product.search(params[:search])
+    else
+      @products = Product.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +23,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
+    @line_item = LineItem.create!
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -26,6 +33,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
+
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
     @product = Product.new
 
     respond_to do |format|
@@ -36,12 +45,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
     @product = Product.find(params[:id])
   end
 
   # POST /products
   # POST /products.json
   def create
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
     @product = Product.new(params[:product])
 
     respond_to do |format|
@@ -58,6 +69,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
     @product = Product.find(params[:id])
 
     respond_to do |format|
@@ -74,6 +86,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
     @product = Product.find(params[:id])
     @product.destroy
 
@@ -84,6 +97,7 @@ class ProductsController < ApplicationController
   end
 
   def import
+    authorize! :manage, @product, :message => 'Not authorized as an administrator'
     Product.import(params[:file])
     redirect_to root_url, notice: "Products imported."
   end
