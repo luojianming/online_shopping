@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
   def index
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
-    @orders = Order.all
+    @orders = Order.find_all_by_processed(0)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,10 +70,11 @@ class OrdersController < ApplicationController
   def update
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
     @order = Order.find(params[:id])
+    @order.processed = 1;
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to orders_path, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

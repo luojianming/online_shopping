@@ -3,14 +3,20 @@
       <tr>
         <th>image</th>
         <th>name</th>
+        <th>color</th>
+        <th>size</th>
+        <th>brand</th>
         <th>quantity</th>
         <th>price</th>
       </tr>
     </thead>
   <% cart.line_items.each do |item| %>
     <tr>
-      <td><%= image_tag(item.product.image_url(:thumb)) %>
+      <td><%= image_tag(item.product.image_url(:small)) %>
       <td><%= item.product.name %></td>
+      <td><%= item.product.color %></td>
+      <td><%= item.product.size %></td>
+      <td><%= item.product.brand %></td>
       <td><%= item.quantity %></td>
       <td class="item_price" id="item_price_<%=item.id%>" ><%= number_to_currency(item.total_price) %></td>
       <td><%= link_to 'delete', item, :method => :delete,
