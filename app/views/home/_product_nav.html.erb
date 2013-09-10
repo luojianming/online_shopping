@@ -198,12 +198,12 @@
         </div>
       </div>
       <div class="span4">
-          <%= form_tag products_path, method: :get, :class => "navbar-search pull-right" do %>
+        <%= form_tag( {:controller => :home, :action => :index }, method: :get, :class => "navbar-search pull-right") do %>
             <div class="field">
               <%= text_field_tag :search, params[:search], :placehold => "search",
                 :class => "search-query" %>
               <a href="#" id="submit-link"><i style="right: 5px; top: 7px;" class="icon-search"></i></a>
-              <input type="submit" value="search" name="commit" style="display: none">
+              <input type="submit" value="search" name="commit" style="display: none" id="search_submit">
             </div>
           <% end %>
       </div>
@@ -221,4 +221,12 @@
 
   <script type="text/javascript">
     $('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+  </script>
+
+  <script>
+    $(function(){
+      $('#submit-link').click(function(){
+        $('#search_submit').click();
+      });
+    });
   </script>

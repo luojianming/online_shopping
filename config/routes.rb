@@ -7,7 +7,6 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
 
   resources :carts
 
-
   resources :products do 
     collection { post :import }
   end
