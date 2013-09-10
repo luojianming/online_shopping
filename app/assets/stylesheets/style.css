@@ -4,8 +4,7 @@
 html, body {
 	font-family: '宋体';
 	font-size: 13px;
-	background: #273900;
-	background: url("../images/bg_html.jpg") fixed top center repeat;
+	background: #ccc;
 }
 
 .sw_main {
