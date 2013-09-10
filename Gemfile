@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.9'
-gem 'sqlite3'
 gem 'pg'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,5 +25,6 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'roo'
 gem 'best_in_place'
-gem 'debugger'
+gem 'debugger', :group => :development
 gem 'thinking-sphinx', '2.0.10'
+gem 'whenever', :require => false
