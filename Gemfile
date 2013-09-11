@@ -7,6 +7,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'multi_json', '1.4.0'
+gem 'addressable'
 gem 'jquery-rails'
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
@@ -28,4 +30,5 @@ gem 'roo'
 gem 'best_in_place'
 gem 'debugger', :group => :development
 gem 'thinking-sphinx', '2.0.10'
+gem 'flying-sphinx', '0.8.5'
 gem 'whenever', :require => false
