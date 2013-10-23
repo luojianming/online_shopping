@@ -1,9 +1,9 @@
-<div class="sw_main" id="options-examples" style="margin-bottom: 20px;">
+<div id="options-examples" style="margin-bottom: 20px;">
 <!-- TOP START -->
   <!-- Nav START -->
   <div id="Z_TMAIL_SIDER_V2" class="sw_categorys_nav">
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
         <div class="span8">
       <div class="allcategorys">
         <h3 class="title-item-hd">
@@ -219,8 +219,10 @@
     -->
   </div>
 
-  <script type="text/javascript">
-    $('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+  <script>
+    $(function(){
+      $('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+    });
   </script>
 
   <script>
@@ -230,3 +232,6 @@
       });
     });
   </script>
+
+  <%= javascript_include_tag "DD_belatedPNG.js" %>
+  <%= javascript_include_tag "jquery.tmailsilder.v2.js" %>

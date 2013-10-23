@@ -59,11 +59,12 @@ class LineItemsController < ApplicationController
   def update
     @line_item = LineItem.find(params[:id])
 
+
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
         format.json { head :no_content }
-        format.js { render 'update.js.erb' }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
@@ -81,6 +82,13 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_back_or 'root_url' }
       format.json { head :no_content }
+    end
+  end
+
+  def ajax_change_price
+    @item = LineItem.find(params[:id].to_i)
+    respond_to do |format|
+      format.js
     end
   end
 end

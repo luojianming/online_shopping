@@ -1,9 +1,7 @@
 <div class="cart_title" style="margin-bottom: 50px;" >Your Cart</div>
 <%= render 'cart', :cart => @cart %>
-<div style="display: inline;">
-  <%= button_to "Checkout", new_order_path, :method => :get, :class => "btn pull-right" %>
-</div>
-<div style="display: inline;">
+<div>
+  <%= button_to "Checkout", new_order_path, :method => :get, :class => "btn pull-right checkout_btn" %>
   <%= button_to 'Empty cart', @cart, :method => :delete, :class => "btn pull-right",
     :confirm => 'Are you sure?' %>
 </div>

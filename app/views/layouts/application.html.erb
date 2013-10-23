@@ -16,16 +16,19 @@
           <%= render 'layouts/navigation' %>
         </div>
       </nav>
+      <% if controller_name == "home" && action_name == "index" %>
+        <%= render 'home/product_nav' %>
+      <% end %>
     </header>
-    <div id="main" role="main" style="margin-top:40px;">
+    <div id="main" role="main" style="margin-top:80px;">
       <div class="container">
         <div class="content">
-           <div class="row">
+           <div class="row" >
             <div class="span12">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
-          </div>
+           </div>
           <footer>
           </footer>
         </div>

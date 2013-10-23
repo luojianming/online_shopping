@@ -1,0 +1,2 @@
+$("#item_price_<%= @item.id %>").html("<%= number_to_currency(@item.total_price) %>");
+$("#cart_total_price").html("<%= @item.cart.total_price %>");

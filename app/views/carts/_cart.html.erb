@@ -17,14 +17,35 @@
       <td><%= item.product.color %></td>
       <td><%= item.product.size %></td>
       <td><%= item.product.brand %></td>
-      <td><%= item.quantity %></td>
+      <td>
+        <span id="item_<%=item.id%>">
+          <%= best_in_place item, :quantity, :type => :input %>
+        </span>
+        <a id="quantity_edit_<%= item.id %>"><i class="icon-edit"></i></a>
+      </td>
       <td class="item_price" id="item_price_<%=item.id%>" ><%= number_to_currency(item.total_price) %></td>
       <td><%= link_to 'delete', item, :method => :delete,
           :confirm => 'Are you sure?'%></td>
     </tr>
+  <script>
+    $(".best_in_place").bind("ajax:success", function(){
+      $.get("/ajax_change_price/", {id: "<%= item.id%>"}, null, "script");
+    });
+  $(function(){
+    $('#quantity_edit_<%=item.id %>').click(function(){
+      $('#item_<%=item.id%> .best_in_place').click();
+    });
+  });
+  </script>
   <% end %>
   <tr class="total_line" >
     <td colspan="4" ></td>
-    <td class="total_cell" >Total: <%= number_to_currency(cart.total_price) %></td>
+    <td class="total_cell" >Total: <span id="cart_total_price"><%= number_to_currency(cart.total_price) %></span></td>
   </tr>
 </table>
+
+<script>
+  $(document).ready(function(){
+    $(".best_in_place").best_in_place();
+  });
+</script>

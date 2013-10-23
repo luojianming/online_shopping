@@ -70,6 +70,7 @@ class CartsController < ApplicationController
       if @cart.update_attributes(params[:cart])
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @cart.errors, status: :unprocessable_entity }

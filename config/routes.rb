@@ -5,6 +5,7 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
   resources :line_items
 
 
+  get "/ajax_change_price" => "line_items#ajax_change_price"
   resources :carts
 
   resources :products do 
