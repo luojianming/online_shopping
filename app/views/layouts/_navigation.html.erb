@@ -14,8 +14,24 @@
     <%= link_to 'Edit account', edit_user_registration_path %>
     </li>
     <% if current_user.has_role? :admin %>
-      <li>
-      <%= link_to 'Admin', users_path %>
+      <li class="dropdown" >
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Admin<i class="icon-user"></i>
+        </a>
+        <ul class="dropdown-menu" style="z-index: 1000">
+          <li>
+            <%= link_to 'Admin Users', users_path %>
+          </li>
+          <li>
+            <%= link_to 'Add Products', new_product_path %>
+          </li>
+          <li>
+            <%= link_to 'Unfinished Orders', orders_path %>
+          </li>
+          <li>
+            <%= link_to 'finished Orders', finished_orders_path %>
+          </li>
+        </ul>
       </li>
     <% end %>
   <% else %>

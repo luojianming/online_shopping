@@ -95,4 +95,14 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def finished_orders
+    authorize! :manage, @order, :message => 'Not authorized as an administrator'
+    @orders = Order.find_all_by_processed(1)
+
+    respond_to do |format|
+      format.html {render 'finished_orders.html.erb'}
+      format.json { render json: @orders }
+    end
+  end
 end

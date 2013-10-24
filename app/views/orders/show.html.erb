@@ -16,6 +16,7 @@
       <td><%= @order.name %></td>
       <td><%= @order.address %></td>
       <td><%= @order.tel %></td>
+      <td><%= link_to 'finished', order_path(@order), :method => :put %></td>
     </tr>
   </table>
 

@@ -1,0 +1,29 @@
+<h1>Listing finished orders</h1>
+
+<table class="table table-condensed">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Tel</th>
+    <th>Time</th>
+    <th>money</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.name %></td>
+    <td><%= order.address %></td>
+    <td><%= order.tel %></td>
+    <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    <td><%= order.total_price %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
