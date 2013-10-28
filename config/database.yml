@@ -15,7 +15,7 @@ development:
   database: online_shopping_development
   pool: 5
   username: root
-  password: 890527
+  password: '890527'
   socket: /var/run/mysqld/mysqld.sock
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -32,7 +32,7 @@ test:
   database: online_shopping_test
   pool: 5
   username: root
-  password: 890527
+  password: '890527'
   socket: /var/run/mysqld/mysqld.sock
 
 #production:
@@ -47,6 +47,6 @@ production:
   database: online_shopping_production
   pool: 5
   username: root
-  password: 890527
+  password: '890527'
   socket: /var/run/mysqld/mysqld.sock
 
