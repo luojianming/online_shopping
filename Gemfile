@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 gem 'rails', '3.2.9'
-gem 'pg'
+gem 'mysql2'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -32,4 +32,4 @@ gem 'debugger', :group => :development
 gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx', '0.8.5'
 gem 'whenever', :require => false
-gem 'capistrano'
+gem 'capistrano', '~> 2.14.1'

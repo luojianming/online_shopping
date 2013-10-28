@@ -3,7 +3,7 @@ require 'thinking_sphinx/deploy/capistrano'
 
 load 'deploy' unless defined?(_cset)
 
-server "166.111.70.158", :web, :app, :db, primary: true
+server "144.76.143.23", :web, :app, :db, primary: true
 
 _cset :asset_env, "RAILS_GROUPS=assets"
 _cset :assets_prefix, "assets"
@@ -11,7 +11,7 @@ _cset :assets_role, [:web]
 
 _cset :normalize_asset_timestamps, false
 set :application, "online_shopping"
-set :user, "ljm"
+set :user, "luojm"
 set :deploy_to, "/home/#{user}/online_shopping"
 set :deploy_via, :remote_cache
 set :use_sudo, true
