@@ -33,3 +33,4 @@ gem 'thinking-sphinx', '2.0.10'
 gem 'flying-sphinx', '0.8.5'
 gem 'whenever', :require => false
 gem 'capistrano', '~> 2.14.1'
+gem 'rubyzip', '< 1.0.0'
