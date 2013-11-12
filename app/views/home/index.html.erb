@@ -1,36 +1,41 @@
-<div id="myCarousel" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="active item">
-      <%= image_tag('carousel-1.jpg') %>
-      <div class="carousel-inner">
-        <h4>图片的说明</h4>
+<%= render 'home/product_category_sider' %>
+<div class="main_container">
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="active item">
+        <%= image_tag('carousel-1.jpg') %>
+        <div class="carousel-inner">
+          <h4>图片的说明</h4>
+        </div>
       </div>
+
+      <div class="item">
+        <%= image_tag('carousel-2.jpg') %>
+        <div class="carousel-inner">
+          <h4>图片的说明</h4>
+        </div>
+      </div>
+
+      <div class="item">
+        <%= image_tag('carousel-3.jpg') %>
+        <div class="carousel-inner">
+          <h4>图片的说明</h4>
+        </div>
+      </div>
+
     </div>
 
-    <div class="item">
-      <%= image_tag('carousel-2.jpg') %>
-      <div class="carousel-inner">
-        <h4>图片的说明</h4>
-      </div>
-    </div>
-
-    <div class="item">
-      <%= image_tag('carousel-3.jpg') %>
-      <div class="carousel-inner">
-        <h4>图片的说明</h4>
-      </div>
-    </div>
-
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
   </div>
 
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  <div class="products_container">
+    <% @products.each do |product| %>
+      <%= render 'product_item', :product => product %>
+    <% end %>
+  </div>
 </div>
-<% @products.each do |product| %>
-  <%= render 'product_item', :product => product %>
-<% end %>
-
 <script>
   $('.carousel').carousel({
     interval: 2000
