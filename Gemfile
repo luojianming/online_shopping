@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
+source 'http://mirrors.4.tuna.tsinghua.edu.cn/rubygems/'
 ruby "1.9.3"
 gem 'rails', '3.2.9'
 gem 'mysql2'

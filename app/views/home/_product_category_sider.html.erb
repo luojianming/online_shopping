@@ -226,18 +226,6 @@
     </ul>
   </div>
 
-  <div class="Z_SubList">
-    <div class="hide">1、服装/内衣/配件</div>
-    <div class="hide">2、鞋/箱包</div>
-    <div class="hide">3、珠宝饰品/手表眼睛</div>
-    <div class="hide">4、化妆品</div>
-    <div class="hide">5、运动户外</div>
-    <div class="hide">6、手机数码</div>
-    <div class="hide">7、家用电器</div>
-    <div class="hide">8、家具建材</div>
-    <div class="hide">9、家纺/居家</div>
-    <div class="hide">10、母婴玩具</div>
-  </div>
 </div>
 <script>
 $('#close_all_collapse').click(function(){
@@ -265,31 +253,75 @@ $(function(){
 });
 
 $(function(){
-  $(".category_list").children("li").mouseover(function(){
+  $(document).on("mouseover", ".category_list > li", function(e){
+    var thisLi = this;
+    var timeOut = setTimeout(function(){
+      showSubList(thisLi);
+    }, 50);
+    $(thisLi).children(".menuIcon").hover(
+      function(){
+      //如果悬浮在.menuIcon上，则showSubList(thisLi)
+        clearTimeout(timeOut);
+      }, function(){
+      //如果没有悬浮在.menuIcon上， 则hideSubList(thisLi)
+        hideSubList(thisLi);
+      });
+    //防止事件冒泡
+     e.stopPropagation();
+  });
+  $(document).on("mouseout", ".category_list > li", function(){
+    var thisLi = this;
+    $(this).removeClass("curr");
+    var timeOut = setTimeout(function(){
+      hideSubList(thisLi);
+    }, 50);
+
+    $(thisLi).children(".menuIcon").hover(
+    function(){
+      clearTimeout(timeOut);
+    }, function(){
+      hideSubList(thisLi);
+    });
+    e.stopPropagation();
+  });
+/*
+  $(document).on("mouseover", ".menuIcon", function(){
+    var thisLi = $(this).parent("li");
+    showSubList(thisLi);
+  });
+
+  $(document).on("mouseout", ".menuIcon", function(){
+    var thisLi = $(this).parent("li");
+    hideSubList(thisLi);
+    });
+    */
+/*
+  $(".category_list").children("li").live('mouseover',function(){
 //    alert($(this).offset().top);
     //    alert($(window).height());
     var thisLi = this;
     $(this).addClass("curr");
     showSubList(thisLi);
-  });
-
+    });
+    */
+/*
   $(".category_list").children("li").mouseout(function(){
 //    alert($(this).offset().top);
 //    alert($(window).height());
     var thisLi = this;
     $(this).removeClass("curr");
-    hideSubList(thisLi);
-  });
+    });
+    */
 });
 
 function showSubList(thisLi) {
-  $(thisLi).append('<s class="menuIcon"></s>');
-  var menuIcon = $(thisLi).children(".menuIcon");
-//  $(menuIcon).attr("top", "200px");
+  $(thisLi).prepend('<div class="menuIcon"></div>');
+  $(thisLi).addClass("curr");
 
 }
 
 function hideSubList(thisLi) {
   $(thisLi).children(".menuIcon").remove();
+  $(thisLi).removeClass("curr");
 }
 </script>
