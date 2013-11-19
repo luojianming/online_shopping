@@ -1,6 +1,7 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
   resources :orders 
 
+  resources :categories
 
   resources :line_items
 

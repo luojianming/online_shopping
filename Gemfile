@@ -1,5 +1,6 @@
 #source 'https://rubygems.org'
-source 'http://mirrors.4.tuna.tsinghua.edu.cn/rubygems/'
+#source 'http://mirrors.tuna.tsinghua.edu.cn/rubygems/'
+source 'http://ruby.taobao.org/'
 ruby "1.9.3"
 gem 'rails', '3.2.9'
 gem 'mysql2'
@@ -35,3 +36,6 @@ gem 'flying-sphinx', '0.8.5'
 gem 'whenever', :require => false
 gem 'capistrano', '~> 2.14.1'
 gem 'rubyzip', '< 1.0.0'
+gem 'cocoon'
+gem 'slim'
+gem 'slim-rails', :require => false
