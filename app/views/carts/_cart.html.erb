@@ -11,10 +11,11 @@
       </tr>
     </thead>
   <% cart.line_items.each do |item| %>
+    <% @photo = Photo.find(item.photo_id) %>
     <tr>
-      <td><%= image_tag(item.product.image_url(:small)) %>
+      <td><%= image_tag(@photo.image_url(:small)) %>
       <td><%= item.product.name %></td>
-      <td><%= item.product.color %></td>
+      <td><%= @photo.color %></td>
       <td><%= item.product.size %></td>
       <td><%= item.product.brand %></td>
       <td>

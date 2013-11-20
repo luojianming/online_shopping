@@ -7,6 +7,7 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
 
   get "/finished_orders" => "orders#finished_orders"
   get "/ajax_change_price" => "line_items#ajax_change_price"
+  get "/change_color" => "line_items#change_color"
   resources :carts
 
   resources :products do 

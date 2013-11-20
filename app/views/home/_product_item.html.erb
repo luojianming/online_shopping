@@ -1,15 +1,19 @@
+<% @photos = product.photos %>
 <div class="product_box">
   <div class="photo">
-    <%= link_to image_tag(product.image_url(:thumb)), product %>
+    <%= link_to image_tag(@photos[0].image_url(:thumb)), product %>
   </div>
-
+  <div>
+    <p>
+      <% for photo in @photos %>
+        <%= image_tag(photo.image_url(:small)) %>
+      <% end %>
+    </p>
+  </div>
   <div class="price">
     <span>$<%= product.price %></span>
   </div>
 
-  <div class="description">
-    <span> <%= product.name %></span>
-  </div>
   <div class="description">
     <span> <%= product.description %></span>
   </div>

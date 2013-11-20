@@ -42,7 +42,8 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:line_item][:product_id])
-    @line_item = @cart.add_product(product.id, params[:line_item][:quantity].to_i)
+    @line_item = @cart.add_product(product.id, params[:line_item][:quantity].to_i, params[:line_item][:photo_id].to_i)
+    @line_item.photo_id = params[:line_item][:photo_id].to_i
      respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart }
@@ -87,6 +88,13 @@ class LineItemsController < ApplicationController
 
   def ajax_change_price
     @item = LineItem.find(params[:id].to_i)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def change_color
+    @photo = Photo.find(params[:id].to_i)
     respond_to do |format|
       format.js
     end

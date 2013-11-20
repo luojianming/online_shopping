@@ -1,8 +1,10 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :discount, :image, :name, :price, :available, :popular, :brand, :color, :size, :category
-  mount_uploader :image, ImageUploader
+  attr_accessible :description, :discount, :name, :price, :available, :popular, :brand, :size, :category, :photos_attributes
 
   has_many :line_items
+  has_many :photos
+  accepts_nested_attributes_for :photos, :reject_if => :all_blank,
+                                :allow_destroy => true
 
   before_destroy :ensure_not_referenced_by_any_line_item
 

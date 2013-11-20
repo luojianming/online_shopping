@@ -1,0 +1,4 @@
+$("#photo").html("<%= j image_tag(@photo.image_url(:big))%>");
+$(".color_alt > img").removeClass("color_selected");
+$("#photo_<%=@photo.id%> > img").addClass('color_selected');
+$('#line_item_photo_id').attr("value", "<%= @photo.id %>");

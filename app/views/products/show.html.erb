@@ -1,8 +1,7 @@
-<div class="span4 pull-left">
-  <%= image_tag(@product.image_url(:big)) %>
+<div class="span4 pull-left" id="photo">
+  <%= image_tag(@product.photos[0].image_url(:big)) %>
 </div>
 <div class="span6 pull-left product_info">
-  <p class="name"><%= @product.name %></p>
   <p class="description"><%= @product.description%></p>
   <p style="margin-bottom: 20px;"><span class="small_font">价格</span>
      <span>$<%= @product.price %></span>
@@ -15,21 +14,31 @@
       <span><%= @product.brand %></span>
     </p>
    <% end %>
-  <% if @product.color %>
     <p><span class="small_font">颜色</span>
-      <span><%= @product.color %></span>
+      <% @photos = @product.photos %>
+      <% for i in 0...@photos.size() %>
+        <% @photo = @photos[i] %>
+        <% if i == 0 %>
+          <%= link_to(image_tag(@photo.image_url(:small), class: "color_selected"), change_color_path(:id => @photo.id), class: "color_alt", id: "photo_"+@photo.id.to_s,:remote => true) %>
+        <% else %>
+          <%= link_to(image_tag(@photo.image_url(:small)), change_color_path(:id => @photo.id), class: "color_alt", id: "photo_"+@photo.id.to_s,:remote => true) %>
+        <% end %>
+
+      <% end %>
     </p>
-   <% end %>
   <% if @product.size %>
     <p><span class="small_font">尺寸</span>
       <span><%= @product.size %></span>
     </p>
    <% end %>
 
-  <%= form_for(@product.line_items.build(product_id: @product.id)) do |f|%>
+  <%= form_for(@product.line_items.build(product_id: @product.id, photo_id: @photos[0].id)) do |f|%>
     <%= f.label :quantity %>
     <%= f.text_field :quantity %>
     <%= f.hidden_field :product_id%></br>
+    <%= f.hidden_field :photo_id %>
     <%= f.submit "Add to Cart", :class => "btn" %>
   <% end %>
 </div>
+<script>
+</script>
