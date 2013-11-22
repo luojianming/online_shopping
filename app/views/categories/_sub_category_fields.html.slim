@@ -2,13 +2,15 @@
   table
     tr
       td
-        = f.input :name, :label => false, :hint => 'name the sub_category' do
-          = f.input_field :name, :hint => 'type the name'
+        a.sub_category_node href="javascript: void(0)"
+          i.icon-folder-open
       td
-        = link_to_remove_association "remove sub_category", f
+        = f.input :name, :label => false
+      td
+        = link_to_remove_association "remove", f
 
   .sub_sub_categories
     = f.simple_fields_for :sub_sub_categories do |sub_sub_category|
       = render 'sub_sub_category_fields', :f => sub_sub_category
-    .links
+    .links.add_sub_sub_category
       = link_to_add_association 'add sub_sub_category', f, :sub_sub_categories

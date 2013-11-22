@@ -1,12 +1,19 @@
 = simple_form_for @category do |f|
-  = f.input :name, :hint => 'The title of your category'
+  table
+    tr
+      td
+        a.category_node href="javascript:void(0)"
+          i.icon-folder-open
+      td
+        = f.input :name, :label => false
 
   = f.simple_fields_for :sub_categories do |sub_category|
     = render 'sub_category_fields', :f => sub_category
   .links
+    i.icon-folder-open.add_sub_category_icon
     = link_to_add_association 'add sub_category', f, :sub_categories
 
-  .actions
+  .actions.submit_category_form
     = f.button :submit, :disable_with => 'Please wait...'
 
 

@@ -39,3 +39,4 @@ gem 'rubyzip', '< 1.0.0'
 gem 'cocoon'
 gem 'slim'
 gem 'slim-rails', :require => false
+gem 'chosen-rails'

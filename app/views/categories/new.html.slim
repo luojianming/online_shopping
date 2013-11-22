@@ -3,3 +3,15 @@ h1 New category
 == render 'form'
 
 = link_to 'Back', categories_path
+
+javascript:
+  $(function(){
+     $('.category_node').click(function(){
+        $('.sub_category').toggle('fast');
+     });
+
+     $(document).on("click", ".sub_category_node", function(){
+        thisNode = this;
+        $(thisNode).parents(".sub_category").children('.sub_sub_categories').toggle('fast');
+     });
+   });

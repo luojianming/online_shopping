@@ -1,0 +1,14 @@
+= simple_form_for @product, :multipart => true do |f|
+  .form_inputs
+    = f.input :name
+    = f.input :price
+    = f.input :discount
+    = f.input :description
+
+    = f.simple_fields_for :photos do |photo|
+      = render 'photo_fields', :f => photo
+    .links
+      = link_to_add_association 'add photo', f, :photos
+
+    .actions.submit_btn
+      = f.button :submit, :disable_with => 'Please wait ...'

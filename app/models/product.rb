@@ -1,8 +1,10 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :discount, :name, :price, :available, :popular, :brand, :size, :category, :photos_attributes
+  attr_accessible :description, :discount, :name, :price, :available, :popular, :brand, :size, :sub_sub_category_id, :photos_attributes
 
   has_many :line_items
   has_many :photos
+
+  belongs_to :sub_sub_category
   accepts_nested_attributes_for :photos, :reject_if => :all_blank,
                                 :allow_destroy => true
 

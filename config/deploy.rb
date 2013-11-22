@@ -15,6 +15,7 @@ set :user, "luojm"
 set :deploy_to, "/home/#{user}/online_shopping"
 set :deploy_via, :remote_cache
 set :use_sudo, true
+set :shared_children, %w(public/system log tmp/pids)
 set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
 set :scm, "git"
 set :repository, "git@github.com:luojianming/online_shopping.git"
@@ -37,7 +38,9 @@ namespace :deploy do
         rm -rf #{latest_release}/public/#{assets_prefix} &&
         mkdir -p #{latest_release}/public &&
         mkdir -p #{shared_path}/assets &&
-        ln -s #{shared_path}/assets #{latest_release}/public/#{assets_prefix}
+        ln -s #{shared_path}/assets #{latest_release}/public/#{assets_prefix} &&
+        rm -rf #{release_path}/public/uploads &&
+        ln -nfs #{shared_path}/uploads #{release_path}/public/uploads
       CMD
      end
 
@@ -77,7 +80,7 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
 =end
     run "mkdir -p #{shared_path}/config"
-    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+#    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     puts "Now edit the config files in #{shared_path}."
 
   end

@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(params[:category_id])
+    @category = Category.new(params[:category])
 
     respond_to do |format|
       if @category.save

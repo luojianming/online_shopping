@@ -7,222 +7,38 @@
   <div>
 
     <ul class="category_list">
-      <li class="list-item0">
-        <a  data-toggle="collapse" href="#item0">服装/内衣/配件</a>
-        <div id="item0" class="collapse in">
+      <% flag = 0 %>
+      <% @categories.each do |category| %>
+        <% if flag%2 == 0 %>
+          <li class="list-item0">
+        <% else %>
+          <li class="list-item0 alt">
+        <% end %>
+        <% flag = flag + 1 %>
+        <div class="menuIcon">
+          <% category.sub_categories.each do |sub_category| %>
+            <div class="sub_category_item">
+              <p><%= sub_category.name %></p>
+              ---------------------------
+              <p>
+              <% sub_category.sub_sub_categories.each do |sub_sub_category| %>
+                <a href="http://www.cortechino.com"><%= sub_sub_category.name %></a>
+              <% end %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+        <a  data-toggle="collapse" href="#item_<%= category.id %>"><%= category.name %></a>
+        <div id="item_<%= category.id %>" class="collapse in">
           <p>
-            <a href="http://www.jq-school.com">女装</a>
-            <a href="http://www.jq-school.com">男装</a>
-            <a href="http://www.schooljq-school.com">内衣</a>
-            <a href="http://www.jq-school.com">呢大衣</a>
-          </p>
-          <p>
-            <a href="http://www.jq-school.com">毛衣</a>
-            <a href="http://www.jq-school.com">保暖</a>
-            <a href="listhttp://www.jq-school.com">睡衣</a>
-            <a href="http://www.jq-school.com">男羽绒</a>
-            <a href="http://www.jq-school.com">男毛衣</a>
+            <% category.sub_categories.each do |sub_category| %>
+              <a href="http://www.cortechino.com"><%= sub_category.name %></a>
+            <% end %>
           </p>
         </div>
-      </li>
+        </li>
+      <% end %>
 
-      <li class="list-item1 alt">
-        <a  data-toggle="collapse" href="#item1">鞋/箱包</a>
-        <div id="item1" class="collapse in">
-          <p>
-            <a href="http://www.jq-school.com">女鞋</a>
-            <a href="http://www.jq-school.com">男鞋</a>
-            <a href="http://www.schooljq-school.com">雪地靴</a>
-            <a href="http://www.jq-school.com">靴子</a>
-          </p>
-          <p>
-            <a href="http://www.jq-school.com">箱包</a>
-            <a href="http://www.jq-school.com">女包</a>
-            <a href="listhttp://www.jq-school.com">男包</a>
-            <a href="http://www.jq-school.com">拉杆箱</a>
-            <a href="http://www.jq-school.com">钱包</a>
-          </p>
-        </div>
-      </li>
-      
-      <li class="list-item2">
-        <a  data-toggle="collapse" href="#item2">珠宝饰品/手表眼镜</a>
-        <div id="item2" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">珠宝</a>
-          <a href="http://www.jq-school.com">足金</a>
-          <a href="http://www.schooljq-school.com">钻戒</a>
-          <a href="http://www.jq-school.com">玉坠</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">手表</a>
-          <a href="http://www.jq-school.com">饰品</a>
-          <a href="listhttp://www.jq-school.com">毛衣链</a>
-          <a href="http://www.jq-school.com">手链</a>
-          <a href="http://www.jq-school.com">瑞士军刀</a>
-          </p>
-        </div>
-      </li>
-
-      <li class="list-item3 alt">
-        <a  data-toggle="collapse" href="#item3">化妆品</a>
-        <div id="item3" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">护肤</a>
-          <a href="http://www.jq-school.com">假发</a>
-          <a href="http://www.schooljq-school.com">香水</a>
-          <a href="http://www.jq-school.com">彩妆</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">套装</a>
-          <a href="http://www.jq-school.com">面膜</a>
-          <a href="listhttp://www.jq-school.com">洁面</a>
-          <a href="http://www.jq-school.com">眼霜</a>
-          <a href="http://www.jq-school.com">BB霜</a>
-          </p>
-        </div>
-      </li>
-
-      <li class="list-item4">
-        <a data-toggle="collapse" href="#item4">运动户外</a>
-        <div id="item4" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">运动鞋</a>
-          <a href="http://www.jq-schoolhool.com">运动服</a>
-          <a href="http://www.jq-school.com">户外</a>
-          <a href="http://www.jq-school.com">用品</a>
-          <a href="http://www.jq-school.com">板鞋</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">跑步鞋</a>
-          <a href="http://www.jq-school.com">羽绒服</a>
-          <a href="http://www.jq-school.com">冲锋衣</a>
-          <a href="http://jqwww.jq-school.com">跑步机</a>
-          </p>
-        </div>
-      </li>
-
-      <li class="list-item5 alt">
-        <a data-toggle="collapse" href="#item5">手机数码</a>
-        <div id="item5" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">手机</a>
-          <a href="http://www.jq-school.com">相机</a>
-          <a href="http://www.jq-schoolhoolol.com">笔记本</a>
-          <a href="http://www.jq-school.com">平板</a>
-          <a href="http://www.jq-school.com">硬件</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">配件</a>
-          <a href="http://www.jq-school.com">视听</a>
-          <a href="http://www.jq-school.com">移动存储</a>
-          <a href="http://www.jq-school.com">台式机</a>
-          </p>
-        </div>
-      </li>
-
-      <li class="list-item6">
-        <a data-toggle="collapse" href="#item6">家用电器</a>
-        <div id="item6" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">大家电</a>
-          <a href="http://www.jq-school.com">影音</a>
-          <a href="http://www.jq-school.com">电视</a>
-          <a href="http://www.jq-school.com">耳机</a>
-          <a href="http://www.jq-school.com">厨房</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">生活电器</a>
-          <a href="http://www.jq-school.controller_namem">取暖器</a>
-          <a href="http://www.jq-school.com">个人护理/http保健</a>
-          </p>
-        </div>
-      </li>
-
-
-      <li class="list-item7 alt">
-        <a data-toggle="collapse" href="#item7">家具建材</a>
-        <div id="item7" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">灯具</a>
-          <a href="http://www.jq-school.com">卫浴</a>
-          <a href="http://www.jq-school.com">油漆</a>
-          <a href="http://www.jq-school.com">开关</a>
-          <a href="http://www.jq-STARTchool.com">地板</a>
-          <a href="http://www.jq-school.com">墙纸</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">沙发</a>
-          <a href="http://www.jq-school.configom">床</a>
-          <a href="http://www.jq-school.com">衣柜</a>
-          <a href="http://www.jq-school.com">床垫</a>
-          <a href="http://www.schooljq-school.com">架类</a>
-          </p>
-        </div>
-      </li>
-
-
-      <li class="list-item8">
-        <a data-toggle="collapse" href="#item8">家纺/居家</a>
-        <div id="item8" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">四件套</a>
-          <a href="http://www.jq-school.com">蚕丝被</a>
-          <a href="http://www.jq-school.com">冬被</a>
-          <a href="http://www.jq-school.com">枕头</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">厨房</a>
-          <a href="http://www.jq-school.com">杯子</a>
-          <a href="http://www.jq-schooljq.com">清洁</a>
-          <a href="http://www.jq-school.com">收纳</a>
-          <a href="http://www.jq-school.com">宠物</a>
-          <a href="http:/schooljq/www.jq-school.com">居家</a>
-          </p>
-        </div>
-      </li>
-
-      <li class="list-item9 alt">
-        <a data-toggle="collapse" href="#item9">母婴玩具</a>
-        <div id="item9" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">奶粉</a>
-          <a href="http://www.jq-school.com">尿裤</a>
-          <a href="http://www.jq-school.com">童装</a>
-          <a href="http://www.jq-schooll.com">孕产</a>
-          <a href="http://www.jq-school.com">玩具</a>
-          <a href="http://www.jq-school.com">车床</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">辅食</a>
-          <a href="http://www.jq-school.com">用品</a>
-          <a href="http://www.jq-school.com">童鞋</a>
-          <a href="http://www.jq-school.com">月子</a>
-          <a href="http://www.jq-school.clearom">大人玩乐</a>
-          </p>
-        </div>
-      </li>
-
-      <li class="list-item10">
-        <a data-toggle="collapse" href="#item10">食品</a>
-        <div id="item10" class="collapse in">
-        <p>
-          <a href="http://www.jq-school.com">零食</a>
-          <a href="http://www.jq-school.com">坚果</a>
-          <a href="http://www.jq-school.com">茶叶</a>
-          <a href="http://www.jq-school.com">冲饮</a>
-          <a href="http://www.jq-school.com">粮油</a>
-          <a href="http://www.jq-school.com">生鲜</a>
-        </p>
-        <p>
-          <a href="http://www.jq-school.com">酒水</a>
-          <a href="http://www.jq-school.com">白酒</a>
-          <a href="http://www.jq-school.com">href葡萄酒</a>
-          <a href="http://www.jq-school.com">巧克力</a>
-          <a href="http://www.jq-school.com">进口</a>
-          </p>
-        </div>
-      </li>
     </ul>
   </div>
 
@@ -257,7 +73,7 @@ $(function(){
     var thisLi = this;
     var timeOut = setTimeout(function(){
       showSubList(thisLi);
-    }, 50);
+    }, 100);
     $(thisLi).children(".menuIcon").hover(
       function(){
       //如果悬浮在.menuIcon上，则showSubList(thisLi)
@@ -274,7 +90,7 @@ $(function(){
     $(this).removeClass("curr");
     var timeOut = setTimeout(function(){
       hideSubList(thisLi);
-    }, 50);
+    }, 100);
 
     $(thisLi).children(".menuIcon").hover(
     function(){
@@ -284,34 +100,6 @@ $(function(){
     });
     e.stopPropagation();
   });
-/*
-  $(document).on("mouseover", ".menuIcon", function(){
-    var thisLi = $(this).parent("li");
-    showSubList(thisLi);
-  });
-
-  $(document).on("mouseout", ".menuIcon", function(){
-    var thisLi = $(this).parent("li");
-    hideSubList(thisLi);
-    });
-    */
-/*
-  $(".category_list").children("li").live('mouseover',function(){
-//    alert($(this).offset().top);
-    //    alert($(window).height());
-    var thisLi = this;
-    $(this).addClass("curr");
-    showSubList(thisLi);
-    });
-    */
-/*
-  $(".category_list").children("li").mouseout(function(){
-//    alert($(this).offset().top);
-//    alert($(window).height());
-    var thisLi = this;
-    $(this).removeClass("curr");
-    });
-    */
 });
 
 function showSubList(thisLi) {

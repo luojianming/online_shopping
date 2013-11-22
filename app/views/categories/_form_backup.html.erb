@@ -1,0 +1,12 @@
+<%= simple_form_for @category do |f| %>
+  <%= f.input :name, :hint => 'The title of your category' %>
+  <%= f.simple_fields_for :sub_categories do |sub_category| %>
+    <%= render 'sub_category_fields', :f => sub_category %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'add sub_category', f, :sub_categories %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, :disable_with => "Please wait..." %>
+  </div>
+<% end %>
