@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131122140248) do
+ActiveRecord::Schema.define(:version => 20131126015630) do
+
+  create_table "banners", :force => true do |t|
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "visiable"
+  end
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -63,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20131122140248) do
     t.string   "size"
     t.string   "brand"
     t.integer  "sub_sub_category_id"
+    t.integer  "stock"
   end
 
   create_table "roles", :force => true do |t|
@@ -75,6 +83,18 @@ ActiveRecord::Schema.define(:version => 20131122140248) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "short_supply_registrations", :force => true do |t|
+    t.string   "name"
+    t.string   "size"
+    t.string   "brand"
+    t.string   "description"
+    t.string   "tel"
+    t.string   "addr"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "status"
+  end
 
   create_table "sub_categories", :force => true do |t|
     t.string   "name"

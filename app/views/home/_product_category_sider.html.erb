@@ -18,13 +18,13 @@
         <div class="menuIcon">
           <% category.sub_categories.each do |sub_category| %>
             <div class="sub_category_item">
-              <p><%= sub_category.name %></p>
-              ---------------------------
-              <p>
+              <div class="item_header">
+                <%= sub_category.name %>
+              </div>
               <% sub_category.sub_sub_categories.each do |sub_sub_category| %>
                 <a href="http://www.cortechino.com"><%= sub_sub_category.name %></a>
+                <span class="">|</span>
               <% end %>
-              </p>
             </div>
           <% end %>
         </div>
@@ -43,6 +43,16 @@
   </div>
 
 </div>
+<script>
+ $(function(){
+  $(".menuIcon").hide();
+  /*
+  $(".menuIcon").masonry({
+  itemSelector: '.sub_category_item',
+  columnWidth : 200
+  });*/
+});
+</script>
 <script>
 $('#close_all_collapse').click(function(){
   $(".collapse").collapse('hide');
@@ -67,10 +77,17 @@ $(function(){
 
   });
 });
-
+$(function(){
+  $(document).on("hover", ".menuIcon a", function(e){
+    e.stopPropagation();
+  });
+});
+/*
+这样写有问题，当menuIcon中有其他时间发生(比如有链接，当鼠标在链接与普通文本之间频繁切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）/ $(thisLi).prepend('<div class="menuIcon"></div>');
 $(function(){
   $(document).on("mouseover", ".category_list > li", function(e){
     var thisLi = this;
+    $(thisLi).addClass("curr");
     var timeOut = setTimeout(function(){
       showSubList(thisLi);
     }, 100);
@@ -87,6 +104,7 @@ $(function(){
   });
   $(document).on("mouseout", ".category_list > li", function(){
     var thisLi = this;
+    $(thisLi).removeClass("curr");
     $(this).removeClass("curr");
     var timeOut = setTimeout(function(){
       hideSubList(thisLi);
@@ -101,15 +119,33 @@ $(function(){
     e.stopPropagation();
   });
 });
-
+*/
+$(function(){
+  $(document).on({
+    mouseover:function(){
+      $(this).addClass("curr");
+      showSubList(this);
+    },
+    mouseout:function(){
+      $(this).removeClass("curr");
+      hideSubList(this);
+    }
+   }, ".category_list > li")
+});
 function showSubList(thisLi) {
-  $(thisLi).prepend('<div class="menuIcon"></div>');
-  $(thisLi).addClass("curr");
-
+ // $(thisLi).prepend('<div class="menuIcon"></div>');
+  $(thisLi).children("div.menuIcon").show();
+  $('.sub_category_item').wookmark({
+    align: 'left',
+    direction: 'left',
+    offset: 3,
+    container: $(thisLi).children("div.menuIcon"),
+    itemWidth: 200
+  });
 }
 
 function hideSubList(thisLi) {
-  $(thisLi).children(".menuIcon").remove();
-  $(thisLi).removeClass("curr");
+  //$(thisLi).children(".menuIcon").remove();
+  $(thisLi).children("div.menuIcon").hide();
 }
 </script>

@@ -1,0 +1,37 @@
+<h1>Short_supply_registrations</h1>
+<h5 style="margin-right: 0px">
+  <%= link_to 'New Short supply registration', new_short_supply_registration_path %>
+</h5>
+<div class="short_supply_list">
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Size</th>
+    <th>Brand</th>
+    <th>Description</th>
+    <th>Tel</th>
+    <th>Addr</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @short_supply_registrations.each do |short_supply_registration| %>
+  <tr>
+    <td><%= short_supply_registration.name %></td>
+    <td><%= short_supply_registration.size %></td>
+    <td><%= short_supply_registration.brand %></td>
+    <td><%= short_supply_registration.description %></td>
+    <td><%= short_supply_registration.tel %></td>
+    <td><%= short_supply_registration.addr %></td>
+    <td id="status_<%= short_supply_registration.id%>"><%= short_supply_registration.status %></td>
+    <td><%= link_to 'Show', short_supply_registration %></td>
+    <td><%= link_to 'Processed', short_supply_registration_path(short_supply_registration), :method => :put, :remote => true %></td>
+    <td><%= link_to 'Destroy', short_supply_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+

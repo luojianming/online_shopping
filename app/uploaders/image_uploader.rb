@@ -4,6 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
    include CarrierWave::RMagick
+   version :banner, :if => :is_banner?
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -34,8 +35,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+   def is_banner? image
+     model.class.to_s == "Banner"
+   end
   # Create different versions of your uploaded files:
+   version :banner do
+     process :resize_to_fill => [870, 500]
+   end
    version :thumb do
      process :resize_to_fill => [208, 230]
    end

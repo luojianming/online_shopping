@@ -1,0 +1,14 @@
+// Place all the styles related to the ShortSupplyRegistrations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+textarea#short_supply_registration_description{
+  height: 80px;
+}
+
+.short_supply_list tr th{
+  padding-right: 15px;
+}
+ .short_supply_list tr{
+   padding-bottom: 20px;
+ }

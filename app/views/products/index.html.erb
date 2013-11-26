@@ -1,10 +1,15 @@
+<%= render 'stylesheet' %>
+<h1><%= link_to 'New product', new_product_path %></h1>
 <h1>Listing products</h1>
 <table>
   <tr>
     <th>Name</th>
+    <th>Size</th>
     <th>Price</th>
+    <th>Brand</th>
     <th>Discount</th>
     <th>Description</th>
+    <th>Stock</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +18,12 @@
 <% @products.each do |product| %>
   <tr>
     <td><%= product.name %></td>
+    <td><%= product.size %></td>
     <td><%= product.price %></td>
+    <td><%= product.brand %></td>
     <td><%= product.discount %></td>
     <td><%= product.description %></td>
+    <td><%= product.stock %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,5 +32,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Product', new_product_path %>

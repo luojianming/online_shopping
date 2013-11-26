@@ -13,7 +13,7 @@
   <% cart.line_items.each do |item| %>
     <% @photo = Photo.find(item.photo_id) %>
     <tr>
-      <td><%= image_tag(@photo.image_url(:small)) %>
+      <td><%= link_to image_tag(@photo.image_url(:small)), product_path(@photo.product) %>
       <td><%= item.product.name %></td>
       <td><%= @photo.color %></td>
       <td><%= item.product.size %></td>

@@ -70,6 +70,7 @@ class OrdersController < ApplicationController
   def update
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
     @order = Order.find(params[:id])
+    @order.process();
     @order.processed = 1;
 
     respond_to do |format|

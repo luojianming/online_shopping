@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @short_supply_registration.name %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @short_supply_registration.size %>
+</p>
+
+<p>
+  <b>Brand:</b>
+  <%= @short_supply_registration.brand %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @short_supply_registration.description %>
+</p>
+
+<p>
+  <b>Tel:</b>
+  <%= @short_supply_registration.tel %>
+</p>
+
+<p>
+  <b>Addr:</b>
+  <%= @short_supply_registration.addr %>
+</p>
+
+
+<%= link_to 'Edit', edit_short_supply_registration_path(@short_supply_registration) %> |
+<%= link_to 'Back', short_supply_registrations_path %>
