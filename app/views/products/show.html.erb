@@ -3,18 +3,18 @@
 </div>
 <div class="span6 pull-left product_info">
   <p class="description"><%= @product.description%></p>
-  <p style="margin-bottom: 20px;"><span class="small_font">价格</span>
-     <span>$<%= @product.price %></span>
+  <p style="margin-bottom: 20px;"><span class="small_font"><%= t('.price') %></span>
+     <span><%= @product.price %>€</span>
   </p>
-  <p><span class="small_font">折扣</span>
+  <p><span class="small_font"><%= t('.discount')%></span>
      <span><%= @product.discount %></span>
   </p>
   <% if @product.brand %>
-    <p><span class="small_font">品牌</span>
+    <p><span class="small_font"><%= t('.brand')%></span>
       <span><%= @product.brand %></span>
     </p>
    <% end %>
-    <p><span class="small_font">颜色</span>
+      <p><span class="small_font"><%= t('.color')%></span>
       <% @photos = @product.photos %>
       <% for i in 0...@photos.size() %>
         <% @photo = @photos[i] %>
@@ -27,18 +27,16 @@
       <% end %>
     </p>
   <% if @product.size %>
-    <p><span class="small_font">尺寸</span>
+    <p><span class="small_font"><%= t('.size') %></span>
       <span><%= @product.size %></span>
     </p>
    <% end %>
 
   <%= form_for(@product.line_items.build(product_id: @product.id, photo_id: @photos[0].id)) do |f|%>
-    <%= f.label :quantity %>
+    <%= f.label :quantity, t('.quantity') %>
     <%= f.text_field :quantity %>
     <%= f.hidden_field :product_id%></br>
     <%= f.hidden_field :photo_id %>
-    <%= f.submit "Add to Cart", :class => "btn" %>
+    <%= f.submit t('.add_to_cart'), :class => "btn" %>
   <% end %>
 </div>
-<script>
-</script>

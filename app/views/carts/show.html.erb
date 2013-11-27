@@ -1,8 +1,8 @@
-<div class="cart_title" style="margin-bottom: 50px;" >Your Cart</div>
+<div class="cart_title" style="margin-bottom: 50px;" ><%= t('.cart_title')%></div>
 <%= render 'cart', :cart => @cart %>
 <div>
-  <%= button_to "Checkout", new_order_path, :method => :get, :class => "btn pull-right checkout_btn" %>
-  <%= button_to 'Empty cart', @cart, :method => :delete, :class => "btn pull-right",
-    :confirm => 'Are you sure?' %>
+  <%= button_to t(".checkout"), new_order_path, :method => :get, :class => "btn pull-right checkout_btn" %>
+  <%= button_to t('.empty'), @cart, :method => :delete, :class => "btn pull-right",
+    :confirm => t('.confirm') %>
 </div>
-<div class="pull-right" style="clear: both; margin-top:10px;"><h3><%= link_to 'continue shopping', root_path %></h3></div>
+<div class="pull-right" style="clear: both; margin-top:10px;"><h3><%= link_to t('.continue_shopping'), root_path %></h3></div>

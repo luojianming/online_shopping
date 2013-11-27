@@ -1,12 +1,15 @@
-<h1>Listing unfinished orders</h1>
+<%= render 'stylesheet' %>
+<h1><%= link_to t('.unfinished_order'), unfinished_orders_path, :method => :get %></h1>
+<h3><%= link_to t('.all_order'), orders_path %></h3>
+<h3><%= link_to t('.finished_order'), finished_orders_path, :method => :get %></h3>
 
 <table class="table table-condensed">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Tel</th>
-    <th>Time</th>
+    <th><%= t('.name') %></th>
+    <th><%= t('.address') %></th>
+    <th><%= t('.tel') %></th>
+    <th><%= t('.time') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,9 +21,9 @@
     <td><%= order.address %></td>
     <td><%= order.tel %></td>
     <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'finished', order_path(order), :method => :put %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('.show'), order %></td>
+    <td><%= link_to t('.finish'), order_path(order), :method => :put %></td>
+    <td><%= link_to t('.destroy'), order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

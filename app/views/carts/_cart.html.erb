@@ -1,13 +1,13 @@
 <table class="table table-condensed">
     <thead>
       <tr>
-        <th>image</th>
-        <th>name</th>
-        <th>color</th>
-        <th>size</th>
-        <th>brand</th>
-        <th>quantity</th>
-        <th>price</th>
+        <th><%= t('.image') %></th>
+        <th><%= t('.name') %></th>
+        <th><%= t('.color') %></th>
+        <th><%= t('.size') %></th>
+        <th><%= t('.brand') %></th>
+        <th><%= t('.quantity') %></th>
+        <th><%= t('.price') %></th>
       </tr>
     </thead>
   <% cart.line_items.each do |item| %>
@@ -24,9 +24,9 @@
         </span>
         <a id="quantity_edit_<%= item.id %>"><i class="icon-edit"></i></a>
       </td>
-      <td class="item_price" id="item_price_<%=item.id%>" ><%= number_to_currency(item.total_price) %></td>
-      <td><%= link_to 'delete', item, :method => :delete,
-          :confirm => 'Are you sure?'%></td>
+      <td class="item_price" id="item_price_<%=item.id%>" ><%= item.total_price %>€</td>
+      <td><%= link_to t('.delete'), item, :method => :delete,
+          :confirm => t('.confirm') %></td>
     </tr>
   <script>
     $(".best_in_place").bind("ajax:success", function(){
@@ -41,7 +41,7 @@
   <% end %>
   <tr class="total_line" >
     <td colspan="4" ></td>
-    <td class="total_cell" >Total: <span id="cart_total_price"><%= number_to_currency(cart.total_price) %></span></td>
+    <td class="total_cell" ><%= t('.total') %>: <span id="cart_total_price"><%= cart.total_price %>€</span></td>
   </tr>
 </table>
 

@@ -1,0 +1,6 @@
+es:
+  hello: "Hello world"
+  layouts:
+    header:
+      shopping_cart: "Carrito de la Compra"
+      about_us:  "Contacto"

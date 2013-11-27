@@ -10,53 +10,50 @@
           <span>
             <span style="font: bolder"><%= Cart.find(session[:cart_id]).total_quantity %></span>
             <i class="icon-shopping-cart icon-white"></i>
-            <%= link_to 'shopping cart', cart_path(session[:cart_id]) %> 
+            <%= link_to t('.shopping_cart'), cart_path(session[:cart_id]) %> 
           </span>
         <% else %>
           <span>
             <span style="font: bolder">0</span>
             <i class="icon-shopping-cart icon-white"></i>
-            shopping cart
+            <%= t('.shopping_cart') %>
           </span>
         <% end %>
         <span>
           0034-633877687
         </span>
-        <%= link_to 'About us', about_path %> 
+        <%= link_to t('.about_us'), about_path %> 
         <% if user_signed_in? %>
-          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
+          <%= link_to t('.logout'), destroy_user_session_path, :method=>'delete' %>        
         <% else %>
-          <%= link_to 'Login', new_user_session_path %>  
+          <%= link_to t('.login'), new_user_session_path %>  
         <% end %>
         <% if user_signed_in? %>
-          <%= link_to 'Edit account', edit_user_registration_path %>
+          <%= link_to t('.edit_account'), edit_user_registration_path %>
           <% if current_user.has_role? :admin %>
             <ul class="nav_admin pull-right">
               <li class="dropdown" >
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Admin<i class="icon-user icon-white"></i>
+                <%= t('.admin') %><i class="icon-user icon-white"></i>
               </a>
               <ul class="dropdown-menu" style="z-index: 1000">
                 <li>
-                <%= link_to 'Admin Users', users_path %>
+                  <%= link_to t('.admin_user'), users_path %>
                 </li>
                 <li>
-                <%= link_to 'Admin Products', products_path %>
+                <%= link_to t('.admin_product'), products_path %>
                 </li>
                 <li>
-                <%= link_to 'Unfinished Orders', orders_path %>
+                <%= link_to t('.admin_order'), orders_path %>
                 </li>
                 <li>
-                <%= link_to 'finished Orders', finished_orders_path %>
+                <%= link_to t('.admin_category'), categories_path %>
                 </li>
                 <li>
-                <%= link_to 'Admin Categories', categories_path %>
+                <%= link_to t('admin_banner'), banners_path %>
                 </li>
                 <li>
-                <%= link_to 'Admin Banners', banners_path %>
-                </li>
-                <li>
-                <%= link_to 'Admin ShortSupply', short_supply_registrations_path %>
+                <%= link_to t('admin_short_supply'), short_supply_registrations_path %>
                 </li>
               </ul>
             <% end %>
@@ -69,14 +66,14 @@
           <% end %>
         </ul>
 
-        <%= link_to 'short supply regisitration', new_short_supply_registration_path %>
+        <%= link_to t('.short_supply'), new_short_supply_registration_path %>
       </div>
 
       <div class="header-right-bottom pull-right">
         <% if controller_name == "home"%>
           <%= form_tag('/', method: :get) do %>
             <%= text_field_tag(:search) %>
-            <%= submit_tag("Search", class: "btn search_btn") %>
+            <%= submit_tag(t(".search"), class: "btn search_btn") %>
           <% end %>
         <% elsif controller_name == "products" && action_name == "index" %>
           <%= form_tag("/products", method: :get) do %>

@@ -3,3 +3,90 @@
 
 en:
   hello: "Hello world"
+  layouts:
+    header:
+      shopping_cart:  "Your cart"
+      about_us:  "About Us"
+      logout:  "Logout"
+      login:  "Login"
+      edit_account:  "Edit account"
+      admin:  "Admin"
+      admin_user:  "Admin Users"
+      admin_product:  "Admin Products"
+      admin_order:  "Admin Orders"
+      admin_category:  "Admin Categories"
+      admin_banner:  "Admin Banners"
+      admin_short_supply:  "Admin ShortSupply"
+      short_supply:  "Short supply registration"
+      search:  "Search"
+    
+  banners:
+    form:
+      save:  "Save"
+    index:
+      banner_list:  "Banners List"
+      unvisiable_all:  "Unvisiable All"
+      photo:  "Photo"
+      visiable:  "Visiable"
+      edit:  "Edit"
+      destroy:  "Destroy"
+    new:
+      new_banner:  "New Banner"
+  carts:
+    cart:
+      image:  "image"
+      name:  "name"
+      color:  "color"
+      size:  "size"
+      brand:  "brand"
+      quantity:  "quantity"
+      price:  "price"
+      delete:  "delete"
+      confirm:  "Are you sure?"
+      total:  "Total"
+    show:
+      cart_title:  "Your Cart"
+      checkout:  "Checkout"
+      empty:  "Empty Cart"
+      confirm:  "Are you sure?"
+      continue_shopping:  "Continue Shopping"
+
+  home:
+    product_category_sider:
+      category_list:  "All categories"
+    product_item:
+      size:  "size"
+  orders:
+    index:
+      unfinished_order:  "Unfinished Orders"
+      finished_order:  "Finished Orders"
+      all_order:  "All Orders"
+      name:  "Name"
+      addr:  "Address"
+      tel:  "Tel"
+      time:  "Time"
+      show:  "Show"
+      finish:  "Finish"
+      destroy:  "Destroy"
+  short_supply_registrations:
+    form:
+      name:  "Product Name"
+      size:  "Size"
+      brand:  "Brand"
+      description:  "Description"
+      tel:  "Tel"
+      addr:  "Addr"
+      description_hint:  "Description must be less than 200 words"
+      create:  "Create"
+
+    new:
+      title:  "New Short supply registration"
+  products:
+    show:
+      color:  "Color"
+      size:  "Size"
+      discount:  "Discount"
+      brand:  "Brand"
+      price:  "Price"
+      quantity:  "Quantity"
+      add_to_cart:  "Add to cart"

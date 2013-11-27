@@ -3,15 +3,15 @@
   <%= f.error_notification %>
   -->
   <div class="form-inputs">
-    <%= f.input :name, :label => "Product Name", :required => true %>
-    <%= f.input :size %>
-    <%= f.input :brand %>
-    <%= f.input :description, :as => :text %>
-    <%= f.input :tel, :required => true %>
-    <%= f.input :addr, :required => true %>
+    <%= f.input :name, :label => t('.name'), :required => true %>
+    <%= f.input :size , :label => t('.size')%>
+    <%= f.input :brand, :label => t('.brand') %>
+    <%= f.input :description, :label => t('.description'),:as => :text, :hint => t('.description_hint') %>
+    <%= f.input :tel, :label => t('.tel'), :required => true %>
+    <%= f.input :addr, :label => t('.addr'), :required => true %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('.create') %>
   </div>
 <% end %>

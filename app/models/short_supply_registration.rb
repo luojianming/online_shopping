@@ -5,6 +5,7 @@ class ShortSupplyRegistration < ActiveRecord::Base
   validates :addr, :presence => true
   validates :tel, :presence => true
   validates :name, :presence => true
+  validates :description, length: { maximum: 200 }
 
   define_index do
     indexes :name

@@ -74,6 +74,7 @@ class ShortSupplyRegistrationsController < ApplicationController
   # DELETE /short_supply_registrations/1
   # DELETE /short_supply_registrations/1.json
   def destroy
+    authorize! :manage, @short_supply_registration
     @short_supply_registration = ShortSupplyRegistration.find(params[:id])
     @short_supply_registration.destroy
 

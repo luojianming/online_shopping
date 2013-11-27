@@ -11,23 +11,16 @@
     </p>
   </div>
   <div class="price">
-    <span>$<%= product.price %></span>
+    <s><%= product.price %>€</s>
+    <span><%= (product.price*(100-product.discount)/100).round(1)%>€</span>
   </div>
 
   <div class="description">
-    <span> <%= product.description %></span>
+    <span> <%= product.description.split(" ")[0,8].join(" ") %>...</span>
   </div>
-  <p><span class="small_font">折扣</span>
-     <span><%= product.discount %></span>
-  </p>
 
-  <% if product.brand %>
-    <p><span class="small_font">品牌</span>
-      <span><%= product.brand %></span>
-    </p>
-   <% end %>
   <% if product.size %>
-    <p><span class="small_font">尺寸</span>
+    <p><span class="small_font"><%= t('.size')%></span>
       <span><%= product.size %></span>
     </p>
    <% end %>

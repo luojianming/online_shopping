@@ -1,12 +1,12 @@
-<h1>Banners List</h1>
+<h1><%= t('.banner_list') %></h1>
 
-<h5 class="pull-right"><%= link_to 'Unvisiable all', unvisiable_all_path, :method => :get%></h5>
+<h5 class="pull-right"><%= link_to t('.unvisiable_all'), unvisiable_all_path, :method => :get%></h5>
 <h5 class="pull-right" style="margin-right: 30px"><%= link_to 'New banner', new_banner_path %></h5>
 <div class="banner_list">
 <table>
   <tr>
-    <th>Photo</th>
-    <th>visiable</th>
+    <th><%= t('.photo') %></th>
+    <th><%= t('.visiable') %></th>
     <th></th>
     <th></th>
   </tr>
@@ -14,8 +14,8 @@
   <tr>
     <th><%= image_tag banner.image_url("big")%></th>
     <th><%= banner.visiable %></th>
-    <th><%= link_to 'Edit', edit_banner_path(banner)%></th>
-    <th><%= link_to 'Destroy', banner_path(banner), :method => :delete %></th>
+    <th><%= link_to t('.edit'), edit_banner_path(banner)%></th>
+    <th><%= link_to t('.destroy'), banner_path(banner), :method => :delete %></th>
   </tr>
 <% end %>
 </table>

@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
   def index
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
-    @orders = Order.find_all_by_processed(0)
+    @orders = Order.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -102,7 +102,16 @@ class OrdersController < ApplicationController
     @orders = Order.find_all_by_processed(1)
 
     respond_to do |format|
-      format.html {render 'finished_orders.html.erb'}
+      format.html {render 'orders/index'}
+      format.json { render json: @orders }
+    end
+  end
+
+  def unfinished_orders
+    authorize! :manage, @order, :message => 'Not authorized as an administrator'
+    @orders = Order.find_all_by_processed(0)
+    respond_to do |format|
+      format.html {render 'orders/index'}
       format.json { render json: @orders }
     end
   end
