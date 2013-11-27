@@ -46,8 +46,19 @@ Rails3BootstrapDeviseCancan::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( DD_belatedPNG.js home.js.coffee carts.js.coffee jquery.tmailsilder.js
-                                 line_items.js.coffee orders.js.coffee products.js.coffee)
+ # config.assets.precompile += %w( DD_belatedPNG.js home.js.coffee carts.js.coffee jquery.tmailsilder.js
+  #                               line_items.js.coffee orders.js.coffee products.js.coffee)
+  def compile_asset?(path)
+    if File.basename(path) =~ /^[^_].*\.\w+$/
+      puts "Compiling: #{path}"
+      true
+    else
+      puts "Ignoring: #{path}"
+      false
+    end
+  end
+
+  config.assets.precompile = [ method(:compile_asset?).to_proc ]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
