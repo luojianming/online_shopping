@@ -101,4 +101,12 @@ class ProductsController < ApplicationController
     Product.import(params[:file])
     redirect_to root_url, notice: "Products imported."
   end
+
+  def filter_by_stock
+    threshold = params[:threshold].to_i
+    @products = Product.filter_by_stock(threshold)
+    respond_to do |format|
+      format.html { render 'products/index' }
+    end
+  end
 end

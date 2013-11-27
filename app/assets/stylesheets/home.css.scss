@@ -51,18 +51,30 @@
 }
 
 .category_bar{
-  position: fixed;
   width: 220px;
   height: auto;
   margin-left: 120px;
+  float: left;
+}
 
+.category_bar_fixed{
+  top: 0px;
+  position: fixed;
 }
 
 .main_container{
   width: 870px;
-  margin-left: 360px;
 }
 
+.main_container_before_bar_fixed{
+  float: left;
+  margin-top: -20px;
+  margin-left: 18px;
+}
+
+.main_container_after_bar_fixed{
+  margin-left: 360px;
+}
 .category_list p{
   margin-bottom: 5px;
 }
@@ -81,7 +93,9 @@
 }
 
 .category_bar{
- border: 1px solid #ddd; 
+ border-left: 1px solid #ddd; 
+ border-right: 1px solid #ddd; 
+ border-bottom: 1px solid #ddd; 
 }
 
 .category_bar .title{

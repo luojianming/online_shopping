@@ -1,6 +1,4 @@
-<% content_for :stylesheet do %>
-  <%= stylesheet_link_tag "bootstrap_and_overrides", "categories" %>
-<% end %>
+<%= render 'stylesheet' %>
 <%= render 'category_item', :category => @category %>
 <%= link_to 'Edit', edit_category_path(@category) %>
 |

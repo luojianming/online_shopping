@@ -15,6 +15,7 @@ class Product < ActiveRecord::Base
 
   define_index do
     indexes :name
+    indexes :brand
     indexes category
   end
   def self.import(file)
@@ -48,6 +49,9 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def self.filter_by_stock(threshold)
+    Product.where("stock < ?", threshold)
+  end
   private
 
   def ensure_not_referenced_by_any_line_item

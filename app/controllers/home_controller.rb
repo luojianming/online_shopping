@@ -7,4 +7,7 @@ class HomeController < ApplicationController
       @products = Product.all
     end
   end
+
+  def about
+  end
 end

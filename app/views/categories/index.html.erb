@@ -1,6 +1,5 @@
-<% content_for :stylesheet do %>
-  <%= stylesheet_link_tag "bootstrap_and_overrides", "categories" %>
-<% end %>
+<%= render 'stylesheet' %>
+
 <h3>
   <%= link_to 'New category', new_category_path %>
 </h3>

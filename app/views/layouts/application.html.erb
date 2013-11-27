@@ -14,17 +14,16 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
+    <!-- 
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container">
-          <% if controller_name == "homes" && action_name == "index" %>
-            
-          <% else %>
-            <%= render 'layouts/navigation' %>
-          <% end %>
         </div>
       </nav>
-    </header>
+      </header>
+      -->
+    <%= render 'layouts/header' %>
+
     <div id="main" role="main" style="">  
       <div class="container">
         <div class="content">

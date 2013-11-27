@@ -1,9 +1,14 @@
 class ShortSupplyRegistrationsController < ApplicationController
   # GET /short_supply_registrations
   # GET /short_supply_registrations.json
+  before_filter :authenticate_user!, :except => [:new, :create]
   def index
-    @short_supply_registrations = ShortSupplyRegistration.all
-
+    authorize! :manage, @short_supply_registration
+    if params[:search] != nil
+      @short_supply_registrations = ShortSupplyRegistration.search(params[:search])
+    else
+      @short_supply_registrations = ShortSupplyRegistration.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @short_supply_registrations }

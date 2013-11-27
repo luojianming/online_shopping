@@ -1,7 +1,12 @@
 <%= render 'stylesheet' %>
-<h1><%= link_to 'New product', new_product_path %></h1>
-<h1>Listing products</h1>
-<table>
+<h3 class="pull-right"><%= link_to 'New product', new_product_path %></h3><br/>
+<h1><%= link_to 'All products', products_path %></h1>
+<%= form_tag({:controller => "products", :action => "filter_by_stock"}, :method => :get) do %>
+  <span>less than </span>
+  <%= text_field_tag(:threshold) %>
+  <%= submit_tag("Go") %>
+<% end %>
+<table class="table table-condensed">
   <tr>
     <th>Name</th>
     <th>Size</th>

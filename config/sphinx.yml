@@ -1,0 +1,13 @@
+production:
+  ngram_len: 1
+  ngram_chars: "U+3000..U+2FA1F"
+  enable_star: true
+
+development:
+  ngram_len: 1
+  ngram_chars: "U+3000..U+2FA1F"
+  port: 9312
+  max_matches: 1000
+  per_page: 100
+  enable_star: true
+

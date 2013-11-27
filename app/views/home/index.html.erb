@@ -1,8 +1,6 @@
-<% content_for :stylesheet do %>
-  <%= stylesheet_link_tag "bootstrap_and_overrides", "home" %>
-<% end %>
 <%= render 'home/product_category_sider' %>
-<div class="main_container">
+<div class="main_container main_container_before_bar_fixed">
+  <% if params[:search] == nil %>
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
       <div class="active item">
@@ -32,7 +30,7 @@
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
   </div>
-
+  <% end %>
   <div class="products_container">
     <% @products.each do |product| %>
       <%= render 'product_item', :product => product %>
@@ -42,5 +40,10 @@
 <script>
   $('.carousel').carousel({
     interval: 2000
-  })
+   })
+</script>
+<script>
+  $(function(){
+    $("input#search").val("<%= params[:search]%>");
+  });
 </script>
