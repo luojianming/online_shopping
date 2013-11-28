@@ -27,7 +27,6 @@ ssh_options[:forward_agent] = true
 default_run_options[:shell] = false
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
-
 before 'deploy:finalize_update', 'deploy:assets:symlink'
 after 'deploy:update_code', 'deploy:assets:precompile'
 after 'deploy:assets:precompile', 'deploy:migrate'
@@ -56,6 +55,8 @@ namespace :deploy do
     end
   end
 =end
+ # before 'deploy:update_code', 'thinking_sphinx:stop'
+  after 'deploy:restart', 'thinking_sphinx:restart'
   namespace :thinking_sphinx do
     task :stop, :roles => :app do
       run "cd #{current_path} && RAILS_ENV=#{rails_env} rake ts:stop"
@@ -70,8 +71,6 @@ namespace :deploy do
     end
   end
 
-  # before 'deploy:update_code', 'deploy:thinking_sphinx:stop'
-  # after 'deploy:restart', 'deploy:thinking_sphinx:restart'
 
 
   task :setup_config, roles: :app do

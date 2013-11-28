@@ -1,6 +1,8 @@
 production:
   enable_star: true
   port: 9312
+  pid_file: /home/luojm/online_shopping/shared/tmp/searchd.pid
+  searchd_file_path: /home/luojm/online_shopping/shared/db/sphinx
 
 development:
   ngram_len: 1
