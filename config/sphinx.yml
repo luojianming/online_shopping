@@ -1,7 +1,6 @@
 production:
-  ngram_len: 1
-  ngram_chars: "U+3000..U+2FA1F"
   enable_star: true
+  port: 9312
 
 development:
   ngram_len: 1
