@@ -55,8 +55,17 @@ namespace :deploy do
     end
   end
 =end
- # before 'deploy:update_code', 'thinking_sphinx:stop'
-  after 'deploy:restart', 'thinking_sphinx:restart'
+  before 'deploy:update_code', 'thinking_sphinx:stop'
+  after 'deploy:restart', 'thinking_sphinx:start'
+  namespace :sphinx do
+    desc "Symlink Sphinx indexes"
+    task :symlink_indexes, :roles => [:app] do
+      run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
+    end
+  end
+
+  after 'deploy:finalize_update', 'sphinx:symlink_indexes'
+=begin
   namespace :thinking_sphinx do
     task :stop, :roles => :app do
       run "cd #{current_path} && RAILS_ENV=#{rails_env} rake ts:stop"
@@ -70,7 +79,7 @@ namespace :deploy do
       CMD
     end
   end
-
+=end
 
 
   task :setup_config, roles: :app do
