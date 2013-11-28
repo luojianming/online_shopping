@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
@@ -9,7 +10,7 @@ class OrdersController < ApplicationController
     else
       @orders = Order.all
     end
-
+    @orders = @orders.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }
@@ -104,6 +105,7 @@ class OrdersController < ApplicationController
   def finished_orders
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
     @orders = Order.find_all_by_processed(1)
+    @orders = @orders.paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
       format.html {render 'orders/index'}
@@ -114,6 +116,7 @@ class OrdersController < ApplicationController
   def unfinished_orders
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
     @orders = Order.find_all_by_processed(0)
+    @orders = @orders.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html {render 'orders/index'}
       format.json { render json: @orders }

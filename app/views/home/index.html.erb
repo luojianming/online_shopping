@@ -35,6 +35,9 @@
     <% @products.each do |product| %>
       <%= render 'product_item', :product => product %>
     <% end %>
+    <div class="pull-right" style="clear: both">
+      <%= will_paginate @products %>
+    </div>
   </div>
 </div>
 <script>

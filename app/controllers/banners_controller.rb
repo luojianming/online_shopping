@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class BannersController < ApplicationController
   before_filter :authenticate_user!
   def new
@@ -18,6 +19,7 @@ class BannersController < ApplicationController
   def index
     authorize! :manage, @banner
     @banners = Banner.all
+    @banners = @banners.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html
     end

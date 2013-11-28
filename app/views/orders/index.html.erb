@@ -26,6 +26,9 @@
     <td><%= link_to t('.destroy'), order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+<div class="pull-right">
+  <%= will_paginate @orders %>
+</div>
 </table>
 
 <br/>

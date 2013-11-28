@@ -40,3 +40,4 @@ gem 'cocoon'
 gem 'slim'
 gem 'slim-rails', :require => false
 gem 'chosen-rails'
+gem 'will_paginate-bootstrap'

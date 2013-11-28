@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class HomeController < ApplicationController
   def index
     @categories = Category.all
@@ -6,6 +7,7 @@ class HomeController < ApplicationController
     else
       @products = Product.all
     end
+    @products = @products.paginate(:page => params[:page], :per_page => 8)
   end
 
   def about

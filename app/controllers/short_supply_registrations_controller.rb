@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class ShortSupplyRegistrationsController < ApplicationController
   # GET /short_supply_registrations
   # GET /short_supply_registrations.json
@@ -9,6 +10,7 @@ class ShortSupplyRegistrationsController < ApplicationController
     else
       @short_supply_registrations = ShortSupplyRegistration.all
     end
+    @short_supply_registrations = @short_supply_registrations.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @short_supply_registrations }

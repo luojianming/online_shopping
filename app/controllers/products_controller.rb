@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class ProductsController < ApplicationController
   # GET /products
   # GET /prooducts.json
@@ -10,6 +11,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    @products = @products.paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -104,6 +106,7 @@ class ProductsController < ApplicationController
   def filter_by_stock
     threshold = params[:threshold].to_i
     @products = Product.filter_by_stock(threshold)
+    @products = @products.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html { render 'products/index' }
     end
