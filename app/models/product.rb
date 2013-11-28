@@ -19,7 +19,8 @@ class Product < ActiveRecord::Base
     indexes sub_sub_category.name, :as => :sub_sub_category_name
   end
   def self.import(file)
-    spreadsheet = open_spreadsheet(file)
+   # spreadsheet = open_spreadsheet(file)
+=begin
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
@@ -29,26 +30,68 @@ class Product < ActiveRecord::Base
       product.attributes = row.to_hash.slice(*accessible_attributes)
       product.save!
     end
-  end
-
-  def self.to_csv(options = {} )
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |product|
-        csv << product.attributes.values_at(*column_names)
+=end
+    CSV.foreach(file.path, headers: true) do |row|
+      debugger
+      product = Product.new
+      product.name = row[0] if row[0]
+      product.size = row[1] if row[1]
+      product.price = row[2] if row[2]
+      product.brand = row[3] if row[3]
+      product.discount = row[4] if row[4]
+      product.description = row[5] if row[5]
+      product.stock = row[6] if row[6]
+      product.sub_sub_category_id = SubSubCategory.find_by_name(row[7]).id if row[7]
+      product.save!
+      image = File.open(File.join("/home/luojm/photos/", row[8]))
+      product.photos.create(:image => image, :color => row[9])
+      for i in 10...row.size()
+        if row[i] == nil
+          break
+        else
+          image = File.open(File.join("/home/luojm/photos/", row[i]))
+          product.photos.create(:image => image, :color => row[i+1])
+          i = i + 2
+        end
       end
     end
   end
 
+  def self.to_csv(products)
+    CSV.generate do |csv|
+     # csv << column_names
+      columns = ["name","size","price","brand","discount", "description", "stock", "category"]
+      csv << columns
+      products.each do |product|
+       # csv << product.attributes.values_at(*column_names)
+
+        arr = []
+        columns.each do |col|
+          if col == "category" && product.attributes["sub_sub_category_id"]
+            arr << product.sub_sub_category.name
+          else
+            arr << product.attributes[col]
+          end
+        end
+        photos = product.photos
+        photos.each do |photo|
+          arr << photo.image.to_s.split("/")[-1]
+          arr << photo.color
+        end
+        csv << arr
+      end
+    end
+  end
+=begin
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
-    when '.csv' then Csv.new(file.path, nil, :ignore)
+    when '.csv' then CSV.new(file.path, nil, :ignore)
     when '.xls' then Roo::Excel.new(file.path, nil, :ignore)
     when '.xlsx' then Roo::Excelx.new(file.path, nil, :ignore)
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
-
+=end
   def self.filter_by_stock(threshold)
     Product.where("stock < ?", threshold)
   end

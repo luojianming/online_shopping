@@ -1,4 +1,7 @@
 <%= render 'stylesheet' %>
+Download:
+<%= link_to "CSV", products_path(format: "csv") %>
+
 <h3 class="pull-right"><%= link_to 'New product', new_product_path %></h3><br/>
 <h1><%= link_to 'All products', products_path %></h1>
 <%= form_tag({:controller => "products", :action => "filter_by_stock"}, :method => :get) do %>
