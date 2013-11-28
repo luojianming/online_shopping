@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
   def index
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
-    @orders = Order.all
+    if params[:search] != nil
+      @orders = Order.search(params[:search])
+    else
+      @orders = Order.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

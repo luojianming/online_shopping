@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
   define_index do
     indexes :name
     indexes :brand
-    indexes category
+    indexes sub_sub_category.name, :as => :sub_sub_category_name
   end
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
