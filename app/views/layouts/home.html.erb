@@ -18,12 +18,16 @@
       </nav>
       </header>
       -->
-    <%= render 'layouts/header' %>
+    <div class="wrap">
+      <%= render 'layouts/header' %>
 
-    <div id="main" role="main" class="main">  
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </div> <!--! end of #main -->
+      <div id="main" role="main" class="main">  
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </div> <!--! end of #main -->
+    </div>
+    <div class="footer">
+    </div>
 
   </body>
 

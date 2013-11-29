@@ -22,17 +22,17 @@
                 <%= sub_category.name %>
               </div>
               <% sub_category.sub_sub_categories.each do |sub_sub_category| %>
-                <a href="http://www.cortechino.com"><%= sub_sub_category.name %></a>
+                <%= link_to sub_sub_category.name, root_path(:search => sub_sub_category.name) %>
                 <span class="">|</span>
               <% end %>
             </div>
           <% end %>
         </div>
-        <a  data-toggle="collapse" href="#item_<%= category.id %>"><%= category.name %></a>
+        <%= link_to category.name, root_path(:search => category.name) %>
         <div id="item_<%= category.id %>" class="collapse in">
           <p>
             <% category.sub_categories.each do |sub_category| %>
-              <a href="http://www.cortechino.com"><%= sub_category.name %></a>
+              <%= link_to sub_category.name, root_path(:search => sub_category.name) %>
             <% end %>
           </p>
         </div>
@@ -46,11 +46,7 @@
 <script>
  $(function(){
   $(".menuIcon").hide();
-  /*
-  $(".menuIcon").masonry({
-  itemSelector: '.sub_category_item',
-  columnWidth : 200
-  });*/
+  $(".collapse").collapse("hide");
 });
 </script>
 <script>
@@ -87,11 +83,6 @@ $(function(){
 
   });
 
-});
-$(function(){
-  $(document).on("hover", ".menuIcon a", function(e){
-    e.stopPropagation();
-  });
 });
 /*
 这样写有问题，当menuIcon中有其他时间发生(比如有链接，当鼠标在链接与普通文本之间频繁切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）(吧毕比如比如比如有哟有有罗里俩连链接练级链接链接三是是是三，的大但当当三是数书包数毕数毕啊数变数毕啊数毕数毕哦数毕数毕啊鼠标鼠标在噈在在下罗里俩连链接练级链接链接有与与篇普普通普通哦普通哦你普通普通吧我巍峨文文本文本额文本文本在文本这文本只文本直接文本之际文本之家文本之间文本之间篇皮品平平凡平发平凡平发平凡平品频繁贫乏频繁频繁去奇切切换切胡切话切换切换）/ $(thisLi).prepend('<div class="menuIcon"></div>');
@@ -142,6 +133,19 @@ $(function(){
       hideSubList(this);
     }
    }, ".category_list > li")
+});
+$(function(){
+  $('.category_list > li').hover(
+    function(){
+      $(this).children(".collapse").collapse('show');
+      $(this).children("a").addClass("white_font");
+      $(this).children(".collapse").find("a").addClass("white_font");
+    },function(){
+      $(this).children(".collapse").collapse('hide');
+      $(this).children("a").removeClass("white_font");
+      $(this).children(".collapse").find("a").removeClass("white_font");
+    }
+  );
 });
 function showSubList(thisLi) {
  // $(thisLi).prepend('<div class="menuIcon"></div>');

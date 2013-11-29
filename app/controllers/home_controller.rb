@@ -2,6 +2,7 @@ require 'will_paginate/array'
 class HomeController < ApplicationController
   def index
     @categories = Category.all
+    @banners = Banner.find_all_by_visiable("true")
     if params[:search] != nil
       @products = Product.search(params[:search])
     else

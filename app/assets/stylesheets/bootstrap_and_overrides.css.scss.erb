@@ -2,9 +2,40 @@
 @import "bootstrap";
 body { 
   padding-top: 60px; 
-  background-image: url(image_path 'background_img.jpg');
+  background-image: url(<%= asset_path 'paper.jpg' %>);
   background-repeat: repeat;
+  height: 100%;
 }
+
+.wrap{
+  height: 100%
+}
+
+body > .wrap{
+  height: auto;
+  min-height: 100%;
+}
+
+#main{
+  padding-bottom: 150px;
+}
+
+.footer{
+  position: relative;
+  margin-top: -150px;
+  height: 150px;
+  clear:both;
+}
+.main:after {content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;}
+.main {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .main { height: 1%;}
+.main {display: block;}
+/* End hide from IE-mac */
 
 //@import "bootstrap-responsive";
 

@@ -3,6 +3,7 @@
   <% if params[:search] == nil %>
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
+      <!--
       <div class="active item">
         <%= image_tag('carousel-1.jpg') %>
         <div class="carousel-inner">
@@ -23,12 +24,25 @@
           <h4>图片的说明</h4>
         </div>
       </div>
-
+      -->
+      <% banner_num = 0 %>
+      <% @banners.each do |banner| %>
+        <% if banner_num == 0 %>
+          <div class="active item">
+        <% else %>
+          <div class="item">
+        <% end %>
+        <% banner_num = banner_num + 1 %>
+          <%= image_tag(banner.image_url(:banner)) %>
+        </div>
+      <% end %>
     </div>
 
+    <% if @banners.size > 1 %>
     <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    <% end %>
   </div>
   <% end %>
   <div class="products_container">

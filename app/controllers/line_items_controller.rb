@@ -58,7 +58,6 @@ class LineItemsController < ApplicationController
 
   # PUT /line_items/1
   # PUT /line_items/1.json
-=begin
   def update
     @line_item = LineItem.find(params[:id])
 
@@ -74,7 +73,6 @@ class LineItemsController < ApplicationController
       end
     end
   end
-=end
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy

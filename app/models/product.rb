@@ -16,6 +16,8 @@ class Product < ActiveRecord::Base
   define_index do
     indexes :name
     indexes :brand
+    indexes sub_sub_category.sub_category.name, :as => :sub_category_name
+    indexes sub_sub_category.sub_category.category.name, :as => :category_name
     indexes sub_sub_category.name, :as => :sub_sub_category_name
   end
   def self.import(file)
