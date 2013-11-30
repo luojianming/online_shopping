@@ -61,6 +61,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        UserMailer.new_order_email(@order).deliver
         format.html { redirect_to root_url, notice: 'Thanks for your order, we will contact you soon later.' }
         format.json { render json: @order, status: :created, location: @order }
       else
