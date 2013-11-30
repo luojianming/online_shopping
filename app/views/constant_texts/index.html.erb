@@ -1,0 +1,41 @@
+<h1>Listing constant_texts</h1>
+
+<table>
+  <tr>
+    <th>Contact state</th>
+    <th>Pay state</th>
+    <th>Store intro</th>
+    <th>Who we are</th>
+    <th>How to buy</th>
+    <th>Delivery area</th>
+    <th>Privacy state</th>
+    <th>Changes state</th>
+    <th>Cookies state</th>
+    <th>Welcome state</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @constant_texts.each do |constant_text| %>
+  <tr>
+    <td><%= constant_text.contact_state %></td>
+    <td><%= constant_text.pay_state %></td>
+    <td><%= constant_text.store_intro %></td>
+    <td><%= constant_text.who_we_are %></td>
+    <td><%= constant_text.how_to_buy %></td>
+    <td><%= constant_text.delivery_area %></td>
+    <td><%= constant_text.privacy_state %></td>
+    <td><%= constant_text.changes_state %></td>
+    <td><%= constant_text.cookies_state %></td>
+    <td><%= constant_text.welcome_state %></td>
+    <td><%= link_to 'Show', constant_text %></td>
+    <td><%= link_to 'Edit', edit_constant_text_path(constant_text) %></td>
+    <td><%= link_to 'Destroy', constant_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Constant text', new_constant_text_path %>

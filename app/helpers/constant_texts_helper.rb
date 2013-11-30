@@ -1,0 +1,2 @@
+module ConstantTextsHelper
+end

@@ -1,4 +1,13 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :constant_texts do
+    member do
+      get 'pay_state', 'changes_state','contact_state', 'store_intro',
+          'who_we_are', 'how_to_buy','delivery_area', 'privacy_state',
+          'cookies_state'
+    end
+  end
+
+
   scope '(:locale)' do
     resources :short_supply_registrations
     resources :orders 

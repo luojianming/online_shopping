@@ -1,42 +1,31 @@
 @charset "utf-8";
 @import "bootstrap";
 body { 
-  padding-top: 60px; 
   background-image: url(<%= asset_path 'paper.jpg' %>);
   background-repeat: repeat;
   height: 100%;
+  margin: 0;
+  padding: 0!important; 
 }
 
-.wrap{
-  height: 100%
-}
 
 body > .wrap{
-  height: auto;
+  height: 100%;
+  height: auto !important;
   min-height: 100%;
+  margin-bottom: -150px;
 }
 
-#main{
-  padding-bottom: 150px;
+
+.push ,.footer{
+  height: 150px;
+  clear: both;
 }
 
 .footer{
-  position: relative;
-  margin-top: -150px;
-  height: 150px;
-  clear:both;
+  margin-top: 20px;
+  border-top: 1px solid #edd;
 }
-.main:after {content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;}
-.main {display: inline-block;}
-/* Hides from IE-mac \*/
-* html .main { height: 1%;}
-.main {display: block;}
-/* End hide from IE-mac */
-
 //@import "bootstrap-responsive";
 
 /* collapsable tree */
