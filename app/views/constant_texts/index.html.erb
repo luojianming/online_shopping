@@ -18,6 +18,9 @@
   </tr>
 
 <% @constant_texts.each do |constant_text| %>
+  <%= link_to 'Show', constant_text %>
+  <%= link_to 'Edit', edit_constant_text_path(constant_text) %>
+  <%= link_to 'Destroy', constant_text, method: :delete, data: { confirm: 'Are you sure?' } %>
   <tr>
     <td><%= constant_text.contact_state %></td>
     <td><%= constant_text.pay_state %></td>
@@ -29,9 +32,6 @@
     <td><%= constant_text.changes_state %></td>
     <td><%= constant_text.cookies_state %></td>
     <td><%= constant_text.welcome_state %></td>
-    <td><%= link_to 'Show', constant_text %></td>
-    <td><%= link_to 'Edit', edit_constant_text_path(constant_text) %></td>
-    <td><%= link_to 'Destroy', constant_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

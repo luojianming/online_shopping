@@ -46,6 +46,11 @@
   </div>
   <% end %>
   <div class="products_container">
+    <% if @products.size == 0 %>
+      <div class="show_in_center">Sorry, there are no products you want, But you can go to 
+        <%= link_to 'short supply registration', new_short_supply_registration_path %>
+      </div>
+    <% end %>
     <% @products.each do |product| %>
       <%= render 'product_item', :product => product %>
     <% end %>
