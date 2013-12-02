@@ -1,4 +1,8 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  get "errors/not_fount"
+
+  get "errors/server_error"
+
   resources :constant_texts do
     member do
       get 'pay_state', 'changes_state','contact_state', 'store_intro',
@@ -7,6 +11,9 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
     end
   end
 
+  match '/404', :to => 'errors#not_found'
+  match '/422', :to => 'errors#server_error'
+  match '/500', :to => 'errors#server_error'
 
   scope '(:locale)' do
     resources :short_supply_registrations

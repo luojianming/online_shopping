@@ -1,6 +1,92 @@
-es:
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
   hello: "Hello world"
   layouts:
     header:
-      shopping_cart: "Carrito de la Compra"
-      about_us:  "Contacto"
+      shopping_cart:  "CESTA DE COMPRA"
+      about_us:  "QUIÉNES SOMOS"
+      logout:  "SALIR"
+      login:  "IDENTIFÍCATE"
+      edit_account:  "EDITAR CUENTA"
+      admin:  "ADMINISTRADOR"
+      admin_user:  "GESTIONAR USUARIOS"
+      admin_product:  "GESTIONAR PRODUCTOS"
+      admin_order:  "GESTIONAR PEDIDOS"
+      admin_category:  "GESTIONAR CATEGORÍAS"
+      admin_banner:  "GESTIONAR PANELES"
+      admin_short_supply:  "GESTIONAR PRODUCTOS TERMINADOS"
+      short_supply:  "REGISTRAR PRODUCTOS TERMINADOS"
+      search:  "BUSCAR"
+    
+  banners:
+    form:
+      save:  "GUARDAR"
+    index:
+      banner_list:  "LISTA DE PANELES"
+      unvisiable_all:  "INVISIBLES"
+      photo:  "FOTOS"
+      visiable:  "VISIBLE"
+      edit:  "EDITAR"
+      destroy:  "BORRAR"
+    new:
+      new_banner:  "NUEVO PANEL"
+  carts:
+    cart:
+      image:  "IMAGEN"
+      name:  "NOMBRE"
+      color:  "COLOR"
+      size:  "TALLA"
+      brand:  "MARCA"
+      quantity:  "CANTIDAD"
+      price:  "PRECIO"
+      delete:  "BORRAR"
+      confirm:  "ESTAS SEGURO DE REALIZAR ESTA OPERACIÓN?"
+      total:  "TOTAL"
+    show:
+      cart_title:  "MI CESTA"
+      checkout:  "SALIR"
+      empty:  "CESTA VACÍO"
+      confirm:  "ESTAS SEGURO DE REALIZAR ESTA OPERACIÓN?"
+      continue_shopping:  "SEGUIR COMPRANDO"
+
+  home:
+    product_category_sider:
+      category_list:  "TODAS LAS CATEGORÍAS"
+    product_item:
+      size:  "TALLA"
+  orders:
+    index:
+      unfinished_order:  "PEDIDOS PENDIENTES"
+      finished_order:  "PEDIDOS FINALIZADOS"
+      all_order:  "TODOS LOS PEDIDOS"
+      name:  "NOMBRE"
+      addr:  "DIRECCIÓN"
+      tel:  "TELÉFONO"
+      time:  "FECHA"
+      show:  "MOSTRAR"
+      finish:  "FINALIZAR"
+      destroy:  "BORRAR"
+  short_supply_registrations:
+    form:
+      name:  "NOMBRE DE PRODUCTO"
+      size:  "TALLA"
+      brand:  "MARCA"
+      description:  "DESCRIPCIÓN"
+      tel:  "TELÉFONO"
+      addr:  "DIRECCIÓN"
+      description_hint:  "MAXIMO 200 PALABRAS EN LA DESCRIPCIÓN"
+      create:  "CREAR"
+
+    new:
+      title:  "PRODUCTOS TERMINADOS"
+  products:
+    show:
+      color:  "COLOR"
+      size:  "TALLA"
+      discount:  "DESCUENTO"
+      brand:  "MARCA"
+      price:  "PRECIO"
+      quantity:  "CANTIDAD"
+      add_to_cart:  "AÑADIR A LA CESTA"

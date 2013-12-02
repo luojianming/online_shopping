@@ -1,3 +1,7 @@
+.header-right-top a, .header-right-top span{
+  font-size: 12px!important;
+}
+
 .header{
   height: 85px;
   background-color: rgb(177, 0, 0); 
@@ -53,6 +57,7 @@ ul.dropdown-menu > li > a{
 
 .header-right-bottom{
   padding-top:20px;
+  width: 800px;
 }
 
 .header-right-bottom form input#search{
