@@ -45,13 +45,13 @@ class Product < ActiveRecord::Base
       product.stock = row[6] if row[6]
       product.sub_sub_category_id = SubSubCategory.find_by_name(row[7]).id if row[7]
       product.save!
-      image = File.open(File.join("/home/luojm/photos/", row[8]))
+      image = File.open(File.join("/home/luojm/products_pic/", row[8]))
       product.photos.create(:image => image, :color => row[9])
       for i in 10...row.size()
         if row[i] == nil
           break
         else
-          image = File.open(File.join("/home/luojm/photos/", row[i]))
+          image = File.open(File.join("/home/luojm/products_pic/", row[i]))
           product.photos.create(:image => image, :color => row[i+1])
           i = i + 2
         end

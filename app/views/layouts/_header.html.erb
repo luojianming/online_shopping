@@ -20,7 +20,7 @@
           </span>
         <% end %>
         <span>
-          Tel: <span style="font-style: bolder"> 0034-633877687 </span>
+          Tel: <span style="font-style: bolder; font-size: 13px;"> 0034-633877687 </span>
         </span>
         <% if user_signed_in? %>
           <%= link_to t('.logout'), destroy_user_session_path, :method=>'delete' %>        
@@ -53,10 +53,10 @@
                 <%= link_to t('.admin_category'), categories_path %>
                 </li>
                 <li>
-                <%= link_to t('admin_banner'), banners_path %>
+                <%= link_to t('.admin_banner'), banners_path %>
                 </li>
                 <li>
-                <%= link_to t('admin_short_supply'), short_supply_registrations_path %>
+                <%= link_to t('.admin_short_supply'), short_supply_registrations_path %>
                 </li>
                 <li>
                 <%= link_to 'Admin ConstantText', constant_texts_path %>

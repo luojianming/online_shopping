@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     else
       @products = Product.all
     end
-    @products = @products.paginate(:page => params[:page], :per_page => 8)
+    @products = @products.paginate(:page => params[:page], :per_page => 16)
   end
 
   def about

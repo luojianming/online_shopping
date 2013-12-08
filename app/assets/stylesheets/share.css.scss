@@ -40,7 +40,7 @@ ul.nav_admin, ul.nav_admin li{
   list-style: none;
 }
 
-ul.nav_admin li, .header-right-top > a{
+ul.nav_admin > li, .header-right-top > a{
   margin-left: 20px;
   float: right;
 }
@@ -52,7 +52,7 @@ ul.nav_admin li, .header-right-top > a{
 
 ul.dropdown-menu > li > a{
   color: #444;
-  text-align: right;
+  text-align: left;
 }
 
 .header-right-bottom{

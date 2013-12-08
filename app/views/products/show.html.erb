@@ -4,12 +4,13 @@
 <div class="span6 pull-left product_info">
   <p class="description"><%= @product.description%></p>
   <p style="margin-bottom: 20px;"><span class="small_font"><%= t('.price') %></span>
-     <span><%= @product.price %>€</span>
+     <s><%= @product.price %>€</s>
+     <span style="color: red"><%= (@product.price*(100-@product.discount)/100).round(1)%>€</span>
   </p>
-  <p><span class="small_font"><%= t('.discount')%></span>
-     <span><%= @product.discount %></span>
+  <p><span class="small_font">Name</span>
+     <span><%= @product.name %></span>
   </p>
-  <% if @product.brand %>
+  <% if @product.brand.to_s != "" %>
     <p><span class="small_font"><%= t('.brand')%></span>
       <span><%= @product.brand %></span>
     </p>
@@ -26,7 +27,7 @@
 
       <% end %>
     </p>
-  <% if @product.size %>
+  <% if @product.size.to_s != "" %>
     <p><span class="small_font"><%= t('.size') %></span>
       <span><%= @product.size %></span>
     </p>
