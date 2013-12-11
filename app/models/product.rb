@@ -33,6 +33,33 @@ class Product < ActiveRecord::Base
       product.save!
     end
 =end
+    excelsheet = Roo::Excelx.new(file.path, nil, :ignore)
+  #  header = excelsheet.row(1)
+    (2..excelsheet.last_row).each do |i|
+      row = excelsheet.row(i)
+      product = Product.new
+      product.name = row[0] if row[0]
+      product.size = row[1] if row[1]
+      product.price = row[2] if row[2]
+      product.brand = row[3] if row[3]
+      product.discount = row[4] if row[4]
+      product.description = row[5] if row[5]
+      product.stock = row[6] if row[6]
+      product.sub_sub_category_id = SubSubCategory.find_by_name(row[7]).id if row[7]
+      product.save!
+      image = File.open(File.join("/home/luojm/products_pic/", row[8]))
+      product.photos.create(:image => image, :color => row[9])
+      for i in 10...row.size()
+        if row[i] == nil
+          break
+        else
+          image = File.open(File.join("/home/luojm/products_pic/", row[i]))
+          product.photos.create(:image => image, :color => row[i+1])
+          i = i + 2
+        end
+      end
+    end
+=begin
     CSV.foreach(file.path, headers: true) do |row|
       debugger
       product = Product.new
@@ -57,6 +84,7 @@ class Product < ActiveRecord::Base
         end
       end
     end
+=end
   end
 
   def self.to_csv(products)

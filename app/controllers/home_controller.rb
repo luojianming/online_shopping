@@ -3,8 +3,12 @@ class HomeController < ApplicationController
   def index
     @categories = Category.all
     @banners = Banner.find_all_by_visiable("true")
+    @products = []
     if params[:search] != nil
-      @products = Product.search(params[:search])
+      search_index = params[:search].split(' ')
+      search_index.each do |si|
+        @products = @products | Product.search(si)
+      end
     else
       @products = Product.all
     end

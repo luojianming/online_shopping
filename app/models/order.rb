@@ -23,7 +23,9 @@ class Order < ActiveRecord::Base
   def process
     line_items.each do |item|
       product = Product.find(item.product_id)
-      product.stock = product.stock - item.quantity
+      if product.stock
+        product.stock = product.stock - item.quantity
+      end
       product.save
     end
   end

@@ -17,7 +17,7 @@ en:
       admin_category:  "GESTIONAR CATEGORÍAS"
       admin_banner:  "GESTIONAR PANELES"
       admin_short_supply:  "GESTIONAR PRODUCTOS TERMINADOS"
-      short_supply:  "REGISTRAR PRODUCTOS TERMINADOS"
+      short_supply:  "PEDIR PRODUCTO"
       search:  "BUSCAR"
     
   banners:
@@ -77,10 +77,10 @@ en:
       tel:  "TELÉFONO"
       addr:  "DIRECCIÓN"
       description_hint:  "MAXIMO 200 PALABRAS EN LA DESCRIPCIÓN"
-      create:  "CREAR"
+      create:  "ENVIAR"
 
     new:
-      title:  "PRODUCTOS TERMINADOS"
+      title:  "PEDIR ESTE PRODUCTO"
   products:
     show:
       color:  "COLOR"

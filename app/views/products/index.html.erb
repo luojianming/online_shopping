@@ -18,6 +18,7 @@ Download:
     <th>Discount</th>
     <th>Description</th>
     <th>Stock</th>
+    <th>Category</th>
     <th></th>
     <th></th>
     <th></th>
@@ -32,6 +33,7 @@ Download:
     <td><%= product.discount %></td>
     <td><%= product.description %></td>
     <td><%= product.stock %></td>
+    <td><%= product.sub_sub_category.name if product.sub_sub_category %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

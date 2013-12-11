@@ -7,7 +7,11 @@ class ProductsController < ApplicationController
 
     authorize! :manage, @product, :message => 'Not authorized as an administrator'
     if params[:search] != nil
-      @products = Product.search(params[:search])
+      @products = []
+      search_index = params[:search].split(' ')
+      search_index.each do |si|
+        @products = @products | Product.search(si)
+      end
     else
       @products = Product.all
     end
@@ -17,7 +21,7 @@ class ProductsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @products }
       format.csv { render text: Product.to_csv(@products) }
-    end
+    end 
   end
 
   # GET /products/1
