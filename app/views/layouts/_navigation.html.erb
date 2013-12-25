@@ -44,11 +44,9 @@
       </li>
     <% end %>
   <% else %>
-    <!--
     <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
+      <%= link_to 'Sign up', new_user_registration_path %>
     </li>
-    -->
     <% if session[:cart_id] %>
       <li>
       <%= link_to 'my cart', cart_path(session[:cart_id]) %>

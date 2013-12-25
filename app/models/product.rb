@@ -125,6 +125,9 @@ class Product < ActiveRecord::Base
   def self.filter_by_stock(threshold)
     Product.where("stock < ?", threshold)
   end
+  def similar_products
+    Product.find_all_by_name(name)
+  end
   private
 
   def ensure_not_referenced_by_any_line_item
@@ -135,4 +138,5 @@ class Product < ActiveRecord::Base
       return false
     end
   end
+
 end

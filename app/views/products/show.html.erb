@@ -41,3 +41,10 @@
     <%= f.submit t('.add_to_cart'), :class => "btn" %>
   <% end %>
 </div>
+<div style="clear: both">
+<p>The similar products</p>
+  <% @similar_products = @product.similar_products %>
+  <% @similar_products.each do |product| %>
+    <%= render 'home/product_item', :product => product %>
+  <% end %>
+</div>

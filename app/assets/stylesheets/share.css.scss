@@ -4,7 +4,7 @@
 
 .header{
   height: 85px;
-  background-color: rgb(177, 0, 0); 
+  background-color: #eee; 
   padding-left: 120px;
 }
 
@@ -22,7 +22,7 @@
 
 .logo h2 a{
   font-style: bolder;
-  color: #fff!important;
+  color: #333!important;
   text-decoration: none;
 }
 .header-right{
@@ -46,7 +46,6 @@ ul.nav_admin > li, .header-right-top > a{
 }
 
 .header-right-top > a, ul.nav_admin > li.dropdown > a{
-  color: #fff;
   text-decoration: none!important;
 }
 
@@ -69,8 +68,6 @@ input.search_btn{
   height: 34px!important;
   margin-top: -9px;
   margin-left: -5px;
-  background: rgb(134, 97, 80)!important;
-  color: #fff;
 }
 .header-right-bottom{
   padding-top:20px;
@@ -91,7 +88,6 @@ input.search_btn{
 }
 
 .header-right-top > span, .header-right-top > span > a{
-  color: #fff;
   margin-right: 20px;
 }
 .header-right ul{

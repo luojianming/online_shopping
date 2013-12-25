@@ -80,8 +80,8 @@ Rails3BootstrapDeviseCancan::Application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "cortechino.com@gmail.com",
-    password: "19911223"
+    user_name: "luojmfly@gmail.com",
+    password: "jianming0527"
   }
 
 
