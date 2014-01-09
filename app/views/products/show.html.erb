@@ -42,7 +42,9 @@
   <% end %>
 </div>
 <div style="clear: both">
-<p>The similar products</p>
+  <div style="height: 40px; line-height: 40px; font-size: 18px; font-weight: bold;border: 1px solid #ddd">
+    Productos Similares
+  </div>
   <% @similar_products = @product.similar_products %>
   <% @similar_products.each do |product| %>
     <%= render 'home/product_item', :product => product %>

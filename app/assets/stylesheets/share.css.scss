@@ -1,5 +1,6 @@
 .header-right-top a, .header-right-top span{
   font-size: 12px!important;
+  color: #333 !important;
 }
 
 .header{
@@ -41,6 +42,7 @@ ul.nav_admin, ul.nav_admin li{
 }
 
 ul.nav_admin > li, .header-right-top > a{
+  color: #333 !important;
   margin-left: 20px;
   float: right;
 }
@@ -127,3 +129,6 @@ input.search_btn{
   width: 900px;
 }
 
+.header_right a{
+  color: #333 !important;
+}

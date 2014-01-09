@@ -2,12 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address, :input_html => {:rows => 4 } %>
-    <%= f.input :tel %>
-  </div>
-
-  <div class="form-actions">
+    <%= f.input :name, :label => t(".name") %>
+    <%= f.input :address, :input_html => {:rows => 4 }, :label => t(".address") %>
+    <%= f.input :tel, :label => t(".tel") %>
     <%= f.button :submit %>
   </div>
+
 <% end %>

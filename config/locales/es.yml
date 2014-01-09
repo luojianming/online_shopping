@@ -19,6 +19,7 @@ en:
       admin_short_supply:  "GESTIONAR PRODUCTOS TERMINADOS"
       short_supply:  "PEDIR PRODUCTO"
       search:  "BUSCAR"
+      sign_up: "REGISTRO"
     
   banners:
     form:
@@ -46,8 +47,8 @@ en:
       total:  "TOTAL"
     show:
       cart_title:  "MI CESTA"
-      checkout:  "SALIR"
-      empty:  "CESTA VACÍO"
+      checkout:  "COMPRAR"
+      empty:  "VACIAR CESTA"
       confirm:  "ESTAS SEGURO DE REALIZAR ESTA OPERACIÓN?"
       continue_shopping:  "SEGUIR COMPRANDO"
 

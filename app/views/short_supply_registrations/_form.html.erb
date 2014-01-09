@@ -9,9 +9,7 @@
     <%= f.input :description, :label => t('.description'),:as => :text, :hint => t('.description_hint') %>
     <%= f.input :tel, :label => t('.tel'), :required => true %>
     <%= f.input :addr, :label => t('.addr'), :required => true %>
-  </div>
-
-  <div class="form-actions">
     <%= f.button :submit, t('.create') %>
   </div>
+
 <% end %>

@@ -19,7 +19,7 @@
           <% category.sub_categories.each do |sub_category| %>
             <div class="sub_category_item">
               <div class="item_header">
-                <%= sub_category.name %>
+                <a href="#"><%= sub_category.name %></a>
               </div>
               <% sub_category.sub_sub_categories.each do |sub_sub_category| %>
                 <%= link_to sub_sub_category.name, root_path(:search => sub_sub_category.name) %>

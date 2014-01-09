@@ -19,6 +19,7 @@ en:
       admin_short_supply:  "Admin ShortSupply"
       short_supply:  "Short supply registration"
       search:  "Search"
+      sign_up: "Sign up"
     
   banners:
     form:
@@ -68,6 +69,10 @@ en:
       show:  "Show"
       finish:  "Finish"
       destroy:  "Destroy"
+    form:
+       name:  "Name"
+       address:  "Address"
+       tel:  "Tel"
   short_supply_registrations:
     form:
       name:  "Product Name"
@@ -90,3 +95,16 @@ en:
       price:  "Price"
       quantity:  "Quantity"
       add_to_cart:  "Add to cart"
+  devise:
+    registrations:
+      new:
+        name:  "Name"
+        email:  "Email"
+        password:  "Password"
+        password_confirmation:  "Password Confirmation"
+    shared:
+      links:
+        sign_in:  "Sign in"
+        sign_up:  "Sign up"
+        forget_pwd: "Forgot your password?"
+        not_receive_con_instru:  "Didn't receive confirmation instructions?"
