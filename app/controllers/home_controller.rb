@@ -5,9 +5,10 @@ class HomeController < ApplicationController
     @banners = Banner.find_all_by_visiable("true")
     @products = []
     if params[:search] != nil
+      @cur_cateory = params[:search]
       search_index = params[:search].split(' ')
       search_index.each do |si|
-        @products = @products | Product.search(si)
+        @products = Product.search(si) | @products
       end
     else
       @products = Product.all

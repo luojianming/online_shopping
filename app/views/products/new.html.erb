@@ -1,17 +1,19 @@
 <%= render 'stylesheet' %>
-<div style="margin-top: 30px;"></div>
-<h1>New product</h1>
+<div class="span6 pull-left">
+  <h3>添加新产品</h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Back', products_path %>
+  <%= link_to '返回', products_path %>
+</div>
 
-
-<h2> Import Products </h2>
-<%= form_tag import_products_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>
+<div class="span4 pull-left">
+  <h2> 批量导入产品 </h2>
+  <%= form_tag import_products_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "导入" %>
+  <% end %>
+</div>
 
 <script>
   $(function(){

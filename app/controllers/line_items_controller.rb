@@ -43,9 +43,9 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:line_item][:product_id])
-    @line_item = @cart.add_product(product.id, params[:line_item][:quantity].to_i, params[:line_item][:photo_id].to_i)
-    @line_item.photo_id = params[:line_item][:photo_id].to_i
-     respond_to do |format|
+    @line_item = @cart.add_product(product.id, params[:line_item][:quantity].to_i)
+    @line_item.photo_id = product.photos[0].id
+    respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart }
         format.json { render json: @line_item, status: :created, location: @line_item }

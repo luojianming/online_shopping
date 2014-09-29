@@ -5,27 +5,7 @@
         <i class="icon-folder-open"></i>
         <%= category.name %>
       </span>
-      <%= link_to 'Edit', edit_category_path(category), :class => "edit_category_link" %>
-      <ul role="group">
-        <% category.sub_categories.each do |sub_category| %>
-        <li class="parent_li" role="treeitem">
-          <span title="Collapse this branch">
-            <i class="icon-minus-sign"></i>
-            <%= sub_category.name %>
-          </span>
-          <ul role="group">
-            <% sub_category.sub_sub_categories.each do |sub_sub_category| %>
-            <li>
-            <span>
-              <i class="icon-leaf"></i>
-              <%= sub_sub_category.name %>
-            </span>
-            </li>
-            <% end %>
-          </ul>
-        </li>
-      <% end %>
-      </ul>
+      <%= link_to '编辑', edit_category_path(category), :class => "edit_category_link" %>
     </li>
   </ul>
 </div>

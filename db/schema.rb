@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225045825) do
+ActiveRecord::Schema.define(:version => 20140924142136) do
 
   create_table "banners", :force => true do |t|
     t.string   "image"
@@ -76,16 +76,18 @@ ActiveRecord::Schema.define(:version => 20131225045825) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.decimal  "price",               :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
     t.float    "discount"
     t.text     "description"
-    t.datetime "created_at",                                                         :null => false
-    t.datetime "updated_at",                                                         :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.integer  "popular"
     t.string   "size"
     t.string   "brand"
-    t.integer  "sub_sub_category_id"
     t.integer  "stock"
+    t.string   "short_name"
+    t.string   "label"
+    t.integer  "category_id"
   end
 
   create_table "roles", :force => true do |t|
@@ -109,20 +111,6 @@ ActiveRecord::Schema.define(:version => 20131225045825) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "status"
-  end
-
-  create_table "sub_categories", :force => true do |t|
-    t.string   "name"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "sub_sub_categories", :force => true do |t|
-    t.string   "name"
-    t.integer  "sub_category_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

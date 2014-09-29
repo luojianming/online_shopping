@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "carts" %>
+<% end %> 
+<div style="text-align: center">
 <div class="cart_title" style="margin-bottom: 50px;" ><%= t('.cart_title')%></div>
 <%= render 'cart', :cart => @cart %>
 <div>
@@ -5,4 +9,6 @@
   <%= button_to t('.empty'), @cart, :method => :delete, :class => "btn pull-right",
     :confirm => t('.confirm') %>
 </div>
+</div>
 <div class="pull-right" style="clear: both; margin-top:10px;"><h3><%= link_to t('.continue_shopping'), root_path %></h3></div>
+</div>

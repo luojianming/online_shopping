@@ -1,7 +1,7 @@
 <div class="header">
   <div class="header_content">
     <div class="logo">
-      <h2><%= link_to 'CorteChino', root_path %></h2>
+      <h2 style="font-family: KaiTi"><%= link_to '阿里零食', root_path %></h2>
     </div>
 
     <div class="header-right pull-right">
@@ -19,14 +19,20 @@
             <%= t('.shopping_cart') %>
           </span>
         <% end %>
+
+        <% if session[:order_id] %>
+          <span>
+           <%= link_to "我的订单", order_path(session[:order_id]) %>
+         </span>
+        <% end %>
         <span>
-          Tel: <span style="font-style: bolder; font-size: 13px;"> 0034-633877687 </span>
+          联系电话: <span style="font-style: bolder; font-size: 13px;"> 0034-633877687 </span>
         </span>
         <% if user_signed_in? %>
           <%= link_to t('.logout'), destroy_user_session_path, :method=>'delete' %>        
         <% else %>
           <%= link_to t('.login'), new_user_session_path %>  
-          <%= link_to t('sign_up'), new_user_registration_path %>
+          <%= link_to t('.sign_up'), new_user_registration_path %>
         <% end %>
         <% if user_signed_in? %>
           <!--
@@ -71,31 +77,32 @@
         <%= link_to t('.short_supply'), new_short_supply_registration_path %>
       </div>
 
-      <div class="header-right-bottom pull-right input-append">
+      <div class="header-right-bottom pull-right input-append" style="text-align: right">
+
         <% if controller_name == "home"%>
           <%= form_tag('/', method: :get) do %>
-            <%= text_field_tag(:search, nil, :placeholder => "input product name or category") %>
+            <%= text_field_tag(:search, nil, :placeholder => "请输入名字或者类别") %>
             <%= submit_tag(t(".search"), class: "btn search_btn add-on") %>
           <% end %>
         <% elsif controller_name == "products" && action_name == "index" %>
           <%= form_tag("/products", method: :get) do %>
-            <%= text_field_tag(:search, nil, :placeholder => "input name or brand or category") %>
-            <%= submit_tag("Search", class: "btn search_btn add-on") %>
+            <%= text_field_tag(:search, nil, :placeholder => "请输入名字/品牌/类别") %>
+            <%= submit_tag(t(".search"), class: "btn search_btn add-on") %>
           <% end %>
         <% elsif controller_name == "short_supply_registrations" && action_name == "index" %>
           <%= form_tag("/short_supply_registrations", method: :get) do %>
-            <%= text_field_tag(:search, nil, :placeholder => "input name or brand or tel") %>
-            <%= submit_tag("Search", class: "btn search_btn add-on") %>
+            <%= text_field_tag(:search, nil, :placeholder => "请输入名字/品牌/电话") %>
+            <%= submit_tag(t(".search"), class: "btn search_btn add-on") %>
           <% end %>
         <% elsif controller_name == "orders" && action_name == "index" %>
           <%= form_tag("/orders", method: :get) do %>
-            <%= text_field_tag(:search, nil,:placeholder => "input name or tel") %>
-            <%= submit_tag("Search", class: "btn search_btn add-on") %>
+            <%= text_field_tag(:search, nil,:placeholder => "请输入名字或者电话") %>
+            <%= submit_tag(t(".search"), class: "btn search_btn add-on") %>
           <% end %>
         <% else %>
           <%= form_tag('/', method: :get) do %>
-            <%= text_field_tag(:search, nil, :placeholder => "input product name") %>
-            <%= submit_tag("Search", class: "btn search_btn add-on") %>
+            <%= text_field_tag(:search, nil, :placeholder => "请输入产品名字") %>
+            <%= submit_tag(t(".search"), class: "btn search_btn add-on") %>
           <% end %>
         <% end %>
       </div>

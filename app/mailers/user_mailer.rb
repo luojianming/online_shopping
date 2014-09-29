@@ -1,6 +1,6 @@
 #encoding: utf-8
 class UserMailer < ActionMailer::Base
-  default from: "cortechino.com@gmail.com"
+  default from: "alilingshi.com@163.com"
 
   def new_order_email(order)
     @order = order

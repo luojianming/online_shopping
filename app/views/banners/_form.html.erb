@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :visiable, collection: ['true','false'] %>
+    <%= f.input :visiable, :label => "是否可见", collection: ['true','false'] %>
     <%= f.file_field :image %>
     <%= f.submit t('.save') %>
   </div>

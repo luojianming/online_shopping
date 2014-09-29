@@ -3,11 +3,11 @@
 <table class="table table-condensed">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Tel</th>
-    <th>Time</th>
-    <th>money</th>
+    <th>名字</th>
+    <th>地址</th>
+    <th>电话</th>
+    <th>时间</th>
+    <th>金额</th>
     <th></th>
     <th></th>
   </tr>
@@ -19,8 +19,8 @@
     <td><%= order.tel %></td>
     <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
     <td><%= order.total_price %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '详细', order %></td>
+    <td><%= link_to '删除', order, method: :delete, data: { confirm: '确定删除？' } %></td>
   </tr>
 <% end %>
 </table>

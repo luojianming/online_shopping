@@ -2,15 +2,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :size %>
-    <%= f.input :price, :required => true %>
-    <%= f.input :brand %>
-    <%= f.input :discount %>
-    <%= f.input :description, :as => :text, :rows => 5 %>
-    <%= f.input :stock %>
-    <%= f.association :sub_sub_category, collection: SubSubCategory.all,
+    <%= f.input :description, :as => :text, :label => "商品信息", :rows => 5 %>
+    <%= f.input :price, :label => "价格", :required => true %>
+    <%= f.input :size, :label => "净含量" %>
+    <%= f.input :brand, :label => "品牌" %>
+    <%= f.input :discount, :label => "折扣" %>
+    <%= f.input :stock, :label => "库存量" %>
+    <%= f.association :category, collection: Category.all,
                       include_blank: true,
+                      label: "类别",
                       required: true,
                       input_html: { class: 'chosen-select' } %>
     <%= f.simple_fields_for :photos do |photo| %>
@@ -18,10 +18,10 @@
     <% end %>
 
     <div class="links">
-      <%= link_to_add_association 'add photo', f, :photos %>
+      <%= link_to_add_association '增加图片', f, :photos %>
     <div>
     <div class="actions submit_btn">
-      <%= f.button :submit, :disable_with => 'please wait ...' %>
+      <%= f.button :submit, :disable_with => '请等待 ...' %>
     </div>
   </div>
 

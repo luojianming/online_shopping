@@ -1,0 +1,110 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  layouts:
+    header:
+      shopping_cart:  "购物车"
+      about_us:  "关于我们"
+      logout:  "退出"
+      login:  "登录"
+      edit_account:  "编辑账户"
+      admin:  "个人资料"
+      admin_user:  "管理用户"
+      admin_product:  "管理产品"
+      admin_order:  "管理订单"
+      admin_category:  "管理类别"
+      admin_banner:  "管理横幅"
+      admin_short_supply:  "管理短缺产品"
+      short_supply:  "缺货登记"
+      search:  "搜索"
+      sign_up: "注册"
+    
+  banners:
+    form:
+      save:  "保存"
+    index:
+      banner_list:  "横幅列表"
+      unvisiable_all:  "使不可见"
+      photo:  "照片"
+      visiable:  "可见"
+      edit:  "编辑"
+      destroy:  "删除"
+    new:
+      new_banner:  "创建新横幅"
+  carts:
+    cart:
+      image:  "图片"
+      name:  "名字"
+      color:  "颜色"
+      size:  "尺寸"
+      brand:  "品牌"
+      quantity:  "数量"
+      price:  "价格"
+      delete:  "删除"
+      confirm:  "确定?"
+      total:  "总计"
+    show:
+      cart_title:  "购物车"
+      checkout:  "结算"
+      empty:  "清空购物车"
+      confirm:  "确定？"
+      continue_shopping:  "继续购物"
+
+  home:
+    product_category_sider:
+      category_list:  "所有类别"
+    product_item:
+      size:  "尺寸"
+  orders:
+    index:
+      unfinished_order:  "未完成订单"
+      finished_order:  "已完成订单"
+      all_order:  "所有订单"
+      name:  "名字"
+      addr:  "地址"
+      tel:  "电话"
+      time:  "时间"
+      show:  "Show"
+      finish:  "完成"
+      destroy:  "销毁"
+    form:
+       name:  "名字"
+       address:  "地址"
+       tel:  "电话"
+  short_supply_registrations:
+    form:
+      name:  "产品名字"
+      size:  "尺寸"
+      brand:  "品牌"
+      description:  "产品描述"
+      tel:  "电话"
+      addr:  "地址"
+      description_hint:  "产品描述必须小于200字"
+      create:  "创建"
+
+    new:
+      title:  "缺货登记"
+  products:
+    show:
+      color:  "颜色"
+      size:  "尺寸"
+      discount:  "折扣"
+      brand:  "品牌"
+      price:  "价钱"
+      quantity:  "数量"
+      add_to_cart:  "加入购物车"
+  devise:
+    registrations:
+      new:
+        name:  "名字"
+        email:  "邮箱"
+        password:  "密码"
+        password_confirmation:  "密码确认"
+    shared:
+      links:
+        sign_in:  "登录"
+        sign_up:  "注册"
+        forget_pwd: "忘记密码?"
+        not_receive_con_instru:  "没有收到邮件？"

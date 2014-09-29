@@ -1,71 +1,44 @@
-<%= render 'home/product_category_sider' %>
-<div class="main_container main_container_before_bar_fixed">
-  <% if params[:search] == nil %>
-  <div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner">
-      <!--
-      <div class="active item">
-        <%= image_tag('carousel-1.jpg') %>
-        <div class="carousel-inner">
-          <h4>图片的说明</h4>
-        </div>
-      </div>
-
-      <div class="item">
-        <%= image_tag('carousel-2.jpg') %>
-        <div class="carousel-inner">
-          <h4>图片的说明</h4>
-        </div>
-      </div>
-
-      <div class="item">
-        <%= image_tag('carousel-3.jpg') %>
-        <div class="carousel-inner">
-          <h4>图片的说明</h4>
-        </div>
-      </div>
-      -->
-      <% banner_num = 0 %>
-      <% @banners.each do |banner| %>
-        <% if banner_num == 0 %>
-          <div class="active item">
-        <% else %>
-          <div class="item">
-        <% end %>
-        <% banner_num = banner_num + 1 %>
-          <%= image_tag(banner.image_url(:banner)) %>
-        </div>
-      <% end %>
-    </div>
-
-    <% if @banners.size > 1 %>
-    <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    <% end %>
-  </div>
-  <% end %>
-  <div class="products_container">
-    <% if @products.size == 0 %>
-      <div class="show_in_center">Sorry, there are no products you want, But you can go to 
-        <%= link_to 'short supply registration', new_short_supply_registration_path %>
-      </div>
-    <% end %>
-    <% @products.each do |product| %>
-      <%= render 'product_item', :product => product %>
-    <% end %>
-    <div class="pull-right" style="clear: both">
-      <%= will_paginate @products %>
-    </div>
-  </div>
+<div class="intro">
+  <h1>不一样的味道，不一样的精彩</h1>
+  <h2>选好喜爱的商品后，提交下单，一小时内送货上门，货到付款！无需注册！</h2>
+  <h2>目前仅面向<span style="color: red">阿里西溪园区</span></h2>
 </div>
-<script>
-  $('.carousel').carousel({
-    interval: 2000
-   })
-</script>
-<script>
-  $(function(){
-    $("input#search").val("<%= params[:search]%>");
-  });
-</script>
+
+<div id="today_recommend">
+  <% if @cur_cateory == nil %>
+    <h2 class="title">今日推荐</h2>
+  <% else %>
+    <h2 class="title"><%= @cur_cateory %>系列</h2>
+  <% end %>
+  <% @products.each do |product|%>
+    <div class="box">
+      <a href="/" style="display: block">
+        <%= image_tag(product.photos[0].image_url(:thumb)) %>
+      </a>
+      <div>
+        <p class="price"><s class="yuanjia">￥<%= product.price%></s><span class="discount_price">￥108</span>
+        <span style="float: right">净含量：<%= product.size%></span>
+        </p>
+
+        <p><%= product.description %></p>
+
+        <!--
+        <form class="form-inline pull-left" style="padding-left: 10px;">
+          <input type="text" style="width:20px" placeholder="1">
+          <button type="submit" class="btn">加入购物车</button>
+        </form>
+        -->
+        <%= form_for(product.line_items.build(product_id: product.id)) do |f|%>
+          <%= f.text_field :quantity, :cols => 4 %>
+          <%= f.hidden_field :product_id%>
+          <%= f.submit '加入购物车', :class => "btn" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div style="height: 100px; width: 100%; clear: both">
+</div>
+
+

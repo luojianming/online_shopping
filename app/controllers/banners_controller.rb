@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'will_paginate/array'
 class BannersController < ApplicationController
   before_filter :authenticate_user!
@@ -55,7 +56,7 @@ class BannersController < ApplicationController
 
     respond_to do |format|
       if @banner.destroy
-        format.html { redirect_to banners_path, notice: 'Banner was successfully destroied.' }
+        format.html { redirect_to banners_path, notice: '横幅删除成功！' }
       end
     end
   end

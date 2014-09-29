@@ -2,10 +2,7 @@
     <thead>
       <tr>
         <th><%= t('.image') %></th>
-        <th><%= t('.name') %></th>
-        <th><%= t('.color') %></th>
-        <th><%= t('.size') %></th>
-        <th><%= t('.brand') %></th>
+        <th>商品信息</th>
         <th><%= t('.quantity') %></th>
         <th><%= t('.price') %></th>
       </tr>
@@ -14,10 +11,7 @@
     <% @photo = Photo.find(item.photo_id) %>
     <tr>
       <td><%= link_to image_tag(@photo.image_url(:small)), product_path(@photo.product) %>
-      <td><%= item.product.name %></td>
-      <td><%= @photo.color %></td>
-      <td><%= item.product.size %></td>
-      <td><%= item.product.brand %></td>
+      <td><%= item.product.description %></td>
       <td>
         <span id="item_<%=item.id%>">
           <%= best_in_place item, :quantity, :type => :input %>

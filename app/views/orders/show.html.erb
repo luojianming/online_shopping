@@ -1,24 +1,68 @@
 <%= render 'stylesheet' %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= render 'carts/cart', :cart => @order %>
-</p>
+<% @order_id_arr.each do |order_id| %>
+  <% @order = Order.find(order_id) %>
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th><%= t('.image') %></th>
+        <th><%= t('.name') %></th>
+        <th><%= t('.color') %></th>
+        <th><%= t('.size') %></th>
+        <th><%= t('.brand') %></th>
+        <th><%= t('.quantity') %></th>
+        <th><%= t('.price') %></th>
+      </tr>
+    </thead>
+  <% @order.line_items.each do |item| %>
+    <% @photo = Photo.find(item.photo_id) %>
+    <tr>
+      <td><%= link_to image_tag(@photo.image_url(:small)), product_path(@photo.product) %>
+      <td><%= item.product.name %></td>
+      <td><%= @photo.color %></td>
+      <td><%= item.product.size %></td>
+      <td><%= item.product.brand %></td>
+      <td>
+        <%= item.quantity %>
+      </td>
+      <td class="item_price" id="item_price_<%=item.id%>" ><%= item.total_price %>€</td>
+    </tr>
+  <% end %>
+  <tr class="total_line" >
+    <td colspan="4" ></td>
+    <td class="total_cell" ><%= t('.total') %>: <span id="cart_total_price"><%= @order.total_price %>€</span></td>
+  </tr>
+</table>
 
 <table class="table table-condensed">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Tel</th>
+        <th>订单号</th>
+        <th>名字</th>
+        <th>地址</th>
+        <th>电话</th>
+        <th>状态</th>
       </tr>
     </thead>
     <tr>
+      <td><%= @order.id %></td>
       <td><%= @order.name %></td>
       <td><%= @order.address %></td>
       <td><%= @order.tel %></td>
-      <td><%= link_to 'finished', order_path(@order), :method => :put %></td>
+      <% if @order.processed == 0 %>
+         <td>等待发货</td>
+      <% elsif @order.processed == 2 %>
+         <td>已发货</td>
+       <% elsif @order.processed == 1 %>
+         <td>交易成功</td>
+      <% end %>
+
+      <% if current_user && current_user.has_role?("admin") %>
+        <td><%= link_to '完成', order_path(@order), :method => :put %></td>
+        <td><%= link_to '发货', products_sended_order_path(@order), :method => :put %></td>
+      <% end %>
     </tr>
   </table>
-
-<%= link_to 'Back', orders_path %>
+<% end %>

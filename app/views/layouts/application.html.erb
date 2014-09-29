@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "CorteChino" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "阿里零食" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "CorteChino" %>">
     <% if content_for?(:stylesheet) %>
       <%= yield(:stylesheet) %>
@@ -24,7 +24,6 @@
       -->
     <div class="wrap">
       <%= render 'layouts/header' %>
-
       <div id="main" role="main" class="main">  
         <div class="container">
           <div class="content">
@@ -39,8 +38,5 @@
       </div> <!--! end of #main -->
 
       <div class="push"></div>
-    </div>
-    <%= render 'layouts/footer' %>
-  </body>
-
+    </div> <%= render 'layouts/footer' %> </body>
 </html>

@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'will_paginate/array'
 class ProductsController < ApplicationController
   # GET /products
@@ -5,12 +6,12 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def index
 
-    authorize! :manage, @product, :message => 'Not authorized as an administrator'
+    authorize! :manage, @product, :message => '对不起，您没有访问权限'
     if params[:search] != nil
       @products = []
       search_index = params[:search].split(' ')
       search_index.each do |si|
-        @products = @products | Product.search(si)
+        @products = Product.search(si) | @products
       end
     else
       @products = Product.all

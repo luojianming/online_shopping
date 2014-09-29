@@ -1,8 +1,10 @@
+#encoding: utf-8
 require 'will_paginate/array'
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
-  before_filter :authenticate_user!, :except => [:new, :create]
+  before_filter :authenticate_user!, :except => [:show, :new, :create]
+  layout "home"
   def index
     authorize! :manage, @order, :message => 'Not authorized as an administrator'
     if params[:search] != nil
@@ -20,8 +22,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    authorize! :manage, @order, :message => 'Not authorized as an administrator'
-    @order = Order.find(params[:id])
+    @order_ids = session[params[:id]].to_s
+    @order_id_arr = @order_ids.split(",")
     store_location
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +36,7 @@ class OrdersController < ApplicationController
   def new
     @cart = current_cart
     if @cart.line_items.empty?
-      redirect_to root_url, :notice => "Your cart is empty"
+      redirect_to root_url, :notice => "对不起，您的购物车是空的"
       return
     end
 
@@ -61,8 +63,17 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        UserMailer.new_order_email(@order).deliver
-        format.html { redirect_to root_url, notice: 'Thanks for your order, we will contact you soon later.' }
+        if (session[:uid] == nil)
+          session[:uid] = SecureRandom.hex(16)
+        end
+        if (session[session[:uid]] == nil)
+          session[session[:uid]] = @order.id.to_s
+        elsif
+          session[session[:uid]] = session[session[:uid]].to_s + "," + @order.id.to_s
+        end
+     #   session[:order_id] = @order.id
+     #   UserMailer.new_order_email(@order).deliver
+        format.html { redirect_to root_url, notice: '感谢您的购物，我们将会在一小时之内送货上门' }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }
@@ -111,6 +122,16 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html {render 'orders/index'}
       format.json { render json: @orders }
+    end
+  end
+
+  def products_sended
+    authorize! :manage, @order, :message => 'Not authorized as an administrator'
+    @order = Order.find(params[:id])
+    @order.processed = 2
+    @order.save
+    respond_to do |format|
+      format.html { redirect_to orders_url, :notice => "订单状态已改为送货中" }
     end
   end
 

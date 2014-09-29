@@ -1,11 +1,6 @@
-.header-right-top a, .header-right-top span{
-  font-size: 12px!important;
-  color: #333 !important;
-}
-
 .header{
   height: 85px;
-  background-color: #eee; 
+  background-color: #fee; 
   padding-left: 120px;
 }
 
@@ -13,6 +8,15 @@
   width: 1100px;
   height: 65px;
   padding-bottom: 20px;
+}
+
+.bs-docs-sidenav {
+  width: 228px;
+  margin: 30px 0px 0px;
+  padding: 0px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.067);
 }
 
 .logo{
@@ -23,13 +27,11 @@
 
 .logo h2 a{
   font-style: bolder;
-  color: #333!important;
   text-decoration: none;
 }
 .header-right{
   float: right;
   width: 800px;
-  margin-right: -10px;
 }
 .header-right-top{
   height: 20px;
@@ -42,7 +44,6 @@ ul.nav_admin, ul.nav_admin li{
 }
 
 ul.nav_admin > li, .header-right-top > a{
-  color: #333 !important;
   margin-left: 20px;
   float: right;
 }
@@ -85,7 +86,7 @@ input.search_btn{
 .header-right-bottom form{
   width: 600px;
   float: right;
-  margin-right: -15px!important;
+  //margin-right: -15px!important;
 }
 
 .header-right-top > span, .header-right-top > span > a{

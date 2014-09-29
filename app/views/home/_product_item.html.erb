@@ -3,23 +3,17 @@
   <div class="photo">
     <%= link_to image_tag(@photos[0].image_url(:thumb)), product %>
   </div>
-  <div>
-    <p>
-      <% for photo in @photos %>
-        <%= image_tag(photo.image_url(:small)) %>
-      <% end %>
-    </p>
-  </div>
+
   <div class="price">
-    <s><%= product.price %>€</s>
-    <span><%= (product.price*(100-product.discount)/100).round(1)%>€</span>
+    <s>¥<%= product.price %></s>
+    <span>¥<%= (product.price*(100-product.discount)/100).round(1)%></span>
   </div>
-<!--
   <div class="description">
     <span> <%= product.description[0,30] %>...</span>
   </div>
-  -->
-    <p>
-      <span><%= product.name %></span>
-    </p>
+  <%= form_for(product.line_items.build(product_id: product.id)) do |f|%>
+    <%= f.text_field :quantity %>
+    <%= f.hidden_field :product_id%></br>
+    <%= f.submit "加入购物车", :class => "btn" %>
+  <% end %>
 </div>

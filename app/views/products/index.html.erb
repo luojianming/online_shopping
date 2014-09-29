@@ -1,24 +1,24 @@
 <%= render 'stylesheet' %>
-Download:
+下载:
 <%= link_to "CSV", products_path(format: "csv") %>
 
-<h3 class="pull-right"><%= link_to 'New product', new_product_path %></h3><br/>
-<h1><%= link_to 'All products', products_path %></h1>
+<h3 class="pull-right"><%= link_to '添加新产品', new_product_path %></h3><br/>
+<h1><%= link_to '全部商品', products_path %></h1>
 <%= form_tag({:controller => "products", :action => "filter_by_stock"}, :method => :get) do %>
-  <span>less than </span>
+  <span>少于: </span>
   <%= text_field_tag(:threshold) %>
-  <%= submit_tag("Go") %>
+  <%= submit_tag("查询") %>
 <% end %>
 <table class="table table-condensed">
   <tr>
-    <th>Name</th>
-    <th>Size</th>
-    <th>Price</th>
-    <th>Brand</th>
-    <th>Discount</th>
-    <th>Description</th>
-    <th>Stock</th>
-    <th>Category</th>
+    <th>图片</th>
+    <th>商品信息</th>
+    <th>价格</th>
+    <th>净含量</th>
+    <th>品牌</th>
+    <th>折扣</th>
+    <th>库存量</th>
+    <th>类别</th>
     <th></th>
     <th></th>
     <th></th>
@@ -26,17 +26,19 @@ Download:
 
 <% @products.each do |product| %>
   <tr>
-    <td><%= product.name %></td>
-    <td><%= product.size %></td>
+    <td>
+      <%= link_to image_tag(product.photos[0].image_url(:small)), product %>
+    </td>
+    <td><%= product.description %></td>
     <td><%= product.price %></td>
+    <td><%= product.size %></td>
     <td><%= product.brand %></td>
     <td><%= product.discount %></td>
-    <td><%= product.description %></td>
     <td><%= product.stock %></td>
-    <td><%= product.sub_sub_category.name if product.sub_sub_category %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= product.category.name if product.category %></td>
+    <td><%= link_to '查看', product %></td>
+    <td><%= link_to '编辑', edit_product_path(product) %></td>
+    <td><%= link_to '删除', product, method: :delete, data: { confirm: '确定删除吗？' } %></td>
   </tr>
 <% end %>
 </table>

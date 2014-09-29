@@ -2,33 +2,64 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "CorteChino" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "阿里零食" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "CorteChino" %>">
     <%= stylesheet_link_tag "bootstrap_and_overrides", "home", "share" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <!--
-    <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-        </div>
-      </nav>
-      </header>
-      -->
-    <div class="wrap">
-      <%= render 'layouts/header' %>
-
-      <div id="main" role="main" class="main">  
-        <%= render 'layouts/messages' %>
-        <%= yield %>
-      </div> <!--! end of #main -->
-      <div class="push"></div>
+  <header id="header">
+  <div id="header-top">
+    <span class="pull-right">联系电话：<span>8888888</span></span>
+    <% if session[:cart_id] %>
+      <span>
+        <span style="font: bolder"><%= Cart.find(session[:cart_id]).total_quantity %></span>
+        <i class="icon-shopping-cart"></i>
+        <%= link_to "购物车", cart_path(session[:cart_id]) %> 
+      </span>
+    <% else %>
+      <span>
+        <span style="font: bolder">0</span>
+        <i class="icon-shopping-cart"></i>
+        <%= t('.shopping_cart') %>
+      </span>
+    <% end %>
+    <% if session[:uid] %>
+      <span>
+        <%= link_to "我的订单", order_path(session[:uid]) %>
+      </span>
+    <% end %>
+  </div>
+  <div id="hwrap">
+    <a href="/" title="Humaan" class="header-logo">
+      阿里零食
+    </a>
+    <nav>
+    <% Category.all.each do |category| %>
+      <%= link_to category.name, root_path(:search => category.name), :class => "active" %>
+    <% end %>
+    </nav>
+  </div>
+  </header>
+  <body id="home_body" class="<%= controller_name %> <%= action_name %>">
+     <div id="content" class="main_content">
+       <%= render 'layouts/messages' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
-    <%= render 'layouts/footer' %>
-
   </body>
-
+<script>
+$(function(){
+	$(window).scroll(function(){
+		//alert("Hi");
+		if( $(window).scrollTop() > 50 ){
+		//	alert("Hi");
+			$("#header").addClass("stuck"); 
+		}else{
+			$("#header").removeClass("stuck");
+		}
+	});
+});
+</script>
 </html>

@@ -21,9 +21,20 @@
     <td><%= order.address %></td>
     <td><%= order.tel %></td>
     <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-    <td><%= link_to t('.show'), order %></td>
+    <td>
+      <% if order.processed == 0 %>
+        等待发货
+      <% elsif order.processed == 1 %>
+        交易完成
+      <% else %>
+        已发货
+      <% end %>
+    </td>
+    <td><%= link_to '查看', order %></td>
     <td><%= link_to t('.finish'), order_path(order), :method => :put %></td>
-    <td><%= link_to t('.destroy'), order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <!--
+    <td><%= link_to t('.destroy'), order, method: :delete, data: { confirm: '确定删除？' } %></td>
+    -->
   </tr>
 <% end %>
 <div class="pull-right">

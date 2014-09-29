@@ -1,0 +1,7 @@
+<div class="span3 bs-docs-sidebar">
+  <ul class="nav nav-list bs-docs-sidenav">
+    <% @categories.each do |category| %> 
+      <li><a href="#overview"><i class="icon-chevron-right"></i> <%= category.name %></a></li>
+    <% end %>
+  </ul>
+</div>

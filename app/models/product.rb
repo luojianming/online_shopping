@@ -1,13 +1,13 @@
 class Product < ActiveRecord::Base
   attr_accessible :description, :discount, :name, :price, :available, :popular, :brand, :size, 
-                  :sub_sub_category_id, :photos_attributes, :stock
+                  :category_id, :photos_attributes, :stock, :short_name, :label
 
   has_many :line_items
   has_many :photos
 
   validates :price, :presence => true
 
-  belongs_to :sub_sub_category
+  belongs_to :category
   accepts_nested_attributes_for :photos, :reject_if => :all_blank,
                                 :allow_destroy => true
 
@@ -16,10 +16,9 @@ class Product < ActiveRecord::Base
   define_index do
     indexes :name
     indexes :brand
-    indexes sub_sub_category.sub_category.name, :as => :sub_category_name
-    indexes sub_sub_category.sub_category.category.name, :as => :category_name
-    indexes sub_sub_category.name, :as => :sub_sub_category_name
+    indexes category.name, :as => :category_name
   end
+
   def self.import(file)
    # spreadsheet = open_spreadsheet(file)
 =begin
@@ -33,23 +32,25 @@ class Product < ActiveRecord::Base
       product.save!
     end
 =end
-    excelsheet = Roo::Excelx.new(file.path, nil, :ignore)
+    excelsheet = Roo::Excel.new(file.path, nil, :ignore)
   #  header = excelsheet.row(1)
     (2..excelsheet.last_row).each do |i|
       row = excelsheet.row(i)
       product = Product.new
       product.name = row[0] if row[0]
-      product.size = row[1] if row[1]
-      product.price = row[2] if row[2]
-      product.brand = row[3] if row[3]
-      product.discount = row[4] if row[4]
-      product.description = row[5] if row[5]
-      product.stock = row[6] if row[6]
-      product.sub_sub_category_id = SubSubCategory.find_by_name(row[7]).id if row[7]
+      product.short_name = row[1] if row[1]
+      product.size = row[2] if row[2]
+      product.price = row[3] if row[3]
+      product.label = row[4] if row[4]
+      product.brand = row[5] if row[5]
+      product.discount = row[6] if row[6]
+      product.description = row[7] if row[7]
+      product.stock = row[8] if row[8]
+      product.category_id = Category.find_by_name(row[9]).id if row[9]
       product.save!
-      image = File.open(File.join("/home/luojm/products_pic/", row[8]))
-      product.photos.create(:image => image, :color => row[9])
-      for i in 10...row.size()
+      image = File.open(File.join("/home/luojm/products_pic/", row[10]))
+      product.photos.create(:image => image, :color => row[11])
+      for i in 12...row.size()
         if row[i] == nil
           break
         else
@@ -90,15 +91,15 @@ class Product < ActiveRecord::Base
   def self.to_csv(products)
     CSV.generate do |csv|
      # csv << column_names
-      columns = ["name","size","price","brand","discount", "description", "stock", "category"]
+      columns = ["name","short_name","size","price","label","brand","discount", "description", "stock", "category"]
       csv << columns
       products.each do |product|
        # csv << product.attributes.values_at(*column_names)
 
         arr = []
         columns.each do |col|
-          if col == "category" && product.attributes["sub_sub_category_id"]
-            arr << product.sub_sub_category.name
+          if col == "category" && product.attributes["category_id"]
+            arr << product.category.name
           else
             arr << product.attributes[col]
           end
